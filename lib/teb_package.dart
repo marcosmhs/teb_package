@@ -20,3 +20,7 @@ export 'visual_elements/teb_silverappbar.dart';
 export 'visual_elements/teb_switch.dart';
 export 'visual_elements/teb_text.dart';
 export 'visual_elements/teb_text_form_field.dart';
+
+export 'visual_elements/month_picker/teb_month_container.dart';
+export 'visual_elements/month_picker/teb_month_dialog.dart';
+export 'visual_elements/month_picker/teb_month_picker.dart';
