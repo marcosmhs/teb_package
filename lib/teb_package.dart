@@ -1,5 +1,7 @@
 library teb_package;
 
+export 'access_log/access_log_controller.dart';
+
 export 'messaging/teb_custom_dialog.dart';
 export 'messaging/teb_custom_message.dart';
 

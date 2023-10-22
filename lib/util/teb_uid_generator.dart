@@ -6,6 +6,10 @@ class TebUidGenerator {
     return customAlphabet('abcdefghijklmnopqrstuwyxz', 5);
   }
 
+  static String get accessLogUid {
+    return 'accesslog-uid-${nanoid(18)}';
+  }
+
   static String get invitationCode {
     return customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUWYXZ', 8);
   }

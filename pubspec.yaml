@@ -1,6 +1,6 @@
 name: teb_package
-description: A new Flutter package project.
-version: 0.0.1
+description: That Exotic Bug Component Pack.
+version: 0.0.2
 homepage:
 
 environment:
@@ -22,6 +22,10 @@ dependencies:
   crypto: ^3.0.3
   font_awesome_flutter: ^10.5.0
   package_info_plus: ^4.1.0  
+  cloud_firestore: ^4.9.0
+  device_info_plus: ^9.1.0
+  ipapi: ^1.0.2
+  
 
 dev_dependencies:
   flutter_test:
