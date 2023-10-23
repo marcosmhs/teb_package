@@ -20,6 +20,8 @@ class AccessData {
   late String? ipAdress; // query
   late String? timezone;
   late bool mobile;
+  late double? screenWidth;
+  late double? screenHeight;
 
   AccessData({
     required this.id,
@@ -37,6 +39,8 @@ class AccessData {
     this.ipAdress,
     this.timezone,
     this.mobile = false,
+    this.screenWidth,
+    this.screenHeight,
   });
 
   static AccessData getAccessDataFromGeoData(GeoData geoData) {
@@ -77,6 +81,8 @@ class AccessData {
       'ipAdress': ipAdress,
       'timezone': timezone,
       'mobile': mobile,
+      'screenWidth': screenWidth,
+      'screenHeight': screenHeight,
     };
 
     return r;
