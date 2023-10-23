@@ -15,12 +15,14 @@ class DeviceLogController {
 
   DeviceLogController({required this.fireStoreInstance});
 
-  void registerAccess({required Size screenResolution}) {
+  void registerAccess({Size? screenResolution}) {
     IpApi.getData().then((geoData) {
       if (geoData != null) {
         var accessData = AccessData.getAccessDataFromGeoData(geoData);
-        accessData.screenWidth = screenResolution.width;
-        accessData.screenHeight = screenResolution.height;
+        if (screenResolution != null) {
+          accessData.screenWidth = screenResolution.width;
+          accessData.screenHeight = screenResolution.height;
+        }
 
         fireStoreInstance.collection(_accessLogCollectionName).doc(accessData.id).set(accessData.toMap);
       }
