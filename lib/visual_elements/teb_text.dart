@@ -9,12 +9,13 @@ class TebText extends StatelessWidget {
   final FontWeight? fontWeight;
   final EdgeInsets? padding;
   final TextAlign? textAlign;
+  final FontStyle? fontStyle;
   final TextOverflow? overflow;
 
   const TebText({
     super.key,
     required this.text,
-    required this.color,
+    this.color,
     this.textSize,
     this.letterSpacing,
     this.wordSpacing,
@@ -22,6 +23,7 @@ class TebText extends StatelessWidget {
     this.padding,
     this.textAlign,
     this.overflow,
+    this.fontStyle,
   });
 
   @override
@@ -34,6 +36,7 @@ class TebText extends StatelessWidget {
         style: TextStyle(
           color: color,
           fontSize: textSize,
+          fontStyle: fontStyle,
           letterSpacing: letterSpacing ?? 0.10,
           wordSpacing: wordSpacing ?? 0.10,
           fontWeight: fontWeight ?? FontWeight.w400,

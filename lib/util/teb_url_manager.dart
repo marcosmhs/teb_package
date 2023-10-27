@@ -1,11 +1,12 @@
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TebUrlManager {
-  static launchUrl({required String url}) async {
+  static Future<bool> launchUrl({required String url}) async {
     if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
+      launchUrlString(url);
+      return true;
     } else {
-      throw 'Não consegui abrir o link $url';
+      return false;
     }
   }
 
