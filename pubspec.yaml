@@ -25,6 +25,11 @@ dependencies:
   cloud_firestore: ^4.9.0
   device_info_plus: ^9.1.0
   ipapi: ^1.0.2
+  url_launcher: ^6.1.14  
+  
+  # image 
+  file_picker: ^6.0.0
+  dio: ^5.3.3
   
 
 dev_dependencies:

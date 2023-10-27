@@ -8,6 +8,7 @@ export 'messaging/teb_custom_message.dart';
 export 'util/teb_return.dart';
 export 'util/teb_uid_generator.dart';
 export 'util/teb_util.dart';
+export 'util/teb_url_manager.dart';
 
 export 'screen_elements/teb_custom_loading.dart';
 export 'screen_elements/teb_custom_modalscafold.dart';
