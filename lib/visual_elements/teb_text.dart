@@ -3,27 +3,27 @@ import 'package:flutter/material.dart';
 class TebText extends StatelessWidget {
   final String text;
   final double? textSize;
-  final Color? color;
+  final Color? textColor;
   final double? letterSpacing;
   final double? wordSpacing;
-  final FontWeight? fontWeight;
+  final FontWeight? textWeight;
   final EdgeInsets? padding;
   final TextAlign? textAlign;
-  final FontStyle? fontStyle;
+  final FontStyle? textStyle;
   final TextOverflow? overflow;
 
-  const TebText({
+  const TebText(
+    this.text, {
     super.key,
-    required this.text,
-    this.color,
+    this.textColor,
     this.textSize,
     this.letterSpacing,
     this.wordSpacing,
-    this.fontWeight,
+    this.textWeight,
     this.padding,
     this.textAlign,
     this.overflow,
-    this.fontStyle,
+    this.textStyle,
   });
 
   @override
@@ -34,12 +34,12 @@ class TebText extends StatelessWidget {
         text,
         textAlign: textAlign,
         style: TextStyle(
-          color: color,
+          color: textColor,
           fontSize: textSize,
-          fontStyle: fontStyle,
+          fontStyle: textStyle,
           letterSpacing: letterSpacing ?? 0.10,
           wordSpacing: wordSpacing ?? 0.10,
-          fontWeight: fontWeight ?? FontWeight.w400,
+          fontWeight: textWeight ?? FontWeight.w400,
           overflow: overflow,
         ),
         maxLines: 4,

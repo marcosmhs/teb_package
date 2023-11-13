@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TebMonthDialog extends StatelessWidget {
-  const TebMonthDialog({Key? key, required this.child}) : super(key: key);
+class TebFaIconDialog extends StatelessWidget {
+  const TebFaIconDialog({Key? key, required this.backgroundColor, required this.child}) : super(key: key);
 
   final Widget child;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class TebMonthDialog extends StatelessWidget {
           constraints: const BoxConstraints(minWidth: 70.0),
           child: Material(
             borderRadius: BorderRadius.circular(8),
+            color: backgroundColor,
             child: child,
           ),
         ),

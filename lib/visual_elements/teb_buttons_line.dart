@@ -11,6 +11,7 @@ class TebButton extends StatefulWidget {
   final TextStyle? textStyle;
   final Widget? icon;
   final FaIcon? faIcon;
+  final EdgeInsetsGeometry? padding;
 
   const TebButton({
     super.key,
@@ -21,6 +22,7 @@ class TebButton extends StatefulWidget {
     this.textStyle,
     this.icon,
     this.faIcon,
+    this.padding,
   });
 
   @override
@@ -32,33 +34,47 @@ class _TebButtonState extends State<TebButton> {
   Widget build(BuildContext context) {
     if (widget.icon != null || widget.faIcon != null) {
       if (widget.buttonType == TebButtonType.outlinedButton) {
-        return OutlinedButton.icon(
-          onPressed: widget.enabled ? widget.onPressed : () => {},
-          style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
-          icon: widget.icon != null ? widget.icon! : widget.faIcon!,
-          label: Text(widget.label, style: widget.textStyle),
+        return Padding(
+          padding: widget.padding != null ? widget.padding! : const EdgeInsets.all(0),
+          child: OutlinedButton.icon(
+            onPressed: widget.enabled ? widget.onPressed : () => {},
+            style:
+                widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
+            icon: widget.icon != null ? widget.icon! : widget.faIcon!,
+            label: Text(widget.label, style: widget.textStyle),
+          ),
         );
       } else {
-        return ElevatedButton.icon(
-          onPressed: widget.enabled ? widget.onPressed : () => {},
-          style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
-          icon: widget.icon != null ? widget.icon! : widget.faIcon!,
-          label: Text(widget.label, style: widget.textStyle),
+        return Padding(
+          padding: widget.padding != null ? widget.padding! : const EdgeInsets.all(0),
+          child: ElevatedButton.icon(
+            onPressed: widget.enabled ? widget.onPressed : () => {},
+            style:
+                widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
+            icon: widget.icon != null ? widget.icon! : widget.faIcon!,
+            label: Text(widget.label, style: widget.textStyle),
+          ),
         );
       }
     }
 
     if (widget.buttonType == TebButtonType.outlinedButton) {
-      return OutlinedButton(
-        onPressed: widget.enabled ? widget.onPressed : () => {},
-        style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
-        child: Text(widget.label, style: widget.textStyle),
+      return Padding(
+        padding: widget.padding != null ? widget.padding! : const EdgeInsets.all(0),
+        child: OutlinedButton(
+          onPressed: widget.enabled ? widget.onPressed : () => {},
+          style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
+          child: Text(widget.label, style: widget.textStyle),
+        ),
       );
     } else {
-      return ElevatedButton(
-        onPressed: widget.enabled ? widget.onPressed : () => {},
-        style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
-        child: Text(widget.label, style: widget.textStyle),
+      return Padding(
+        padding: widget.padding != null ? widget.padding! : const EdgeInsets.all(0),
+        child: ElevatedButton(
+          onPressed: widget.enabled ? widget.onPressed : () => {},
+          style: widget.enabled ? null : ButtonStyle(foregroundColor: MaterialStateProperty.all(Theme.of(context).disabledColor)),
+          child: Text(widget.label, style: widget.textStyle),
+        ),
       );
     }
   }

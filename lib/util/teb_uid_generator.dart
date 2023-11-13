@@ -13,6 +13,10 @@ class TebUidGenerator {
     return customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUWYXZ', 8);
   }
 
+  static String get userAccessCode {
+    return customAlphabet('1234567890ABCDEFGHIJKLMNOPQRSTUWYXZ', 12);
+  }
+
   static String get firestoreUid {
     return 'firestore-uid-${nanoid(13)}';
   }

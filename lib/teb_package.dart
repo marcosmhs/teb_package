@@ -27,3 +27,6 @@ export 'visual_elements/teb_text_form_field.dart';
 export 'visual_elements/month_picker/teb_month_container.dart';
 export 'visual_elements/month_picker/teb_month_dialog.dart';
 export 'visual_elements/month_picker/teb_month_picker.dart';
+
+export 'visual_elements/fa_icons_picker/teb_fa_icons_dialog.dart';
+export 'visual_elements/fa_icons_picker/teb_fa_icons_picker.dart';

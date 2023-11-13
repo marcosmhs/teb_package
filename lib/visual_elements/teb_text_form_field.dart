@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class TebTextEdit extends StatefulWidget {
+  final double? width;
   final String labelText;
   final String hintText;
   final TextEditingController? controller;
@@ -19,8 +20,8 @@ class TebTextEdit extends StatefulWidget {
   final IconData? prefixIcon;
   final Color? fillColor;
   final String? Function(String?)? validator;
-  final void Function(String?)? onSave;
-  final void Function(String?)? onChanged;
+  final void Function(String? value)? onSave;
+  final void Function(String? value)? onChanged;
   final void Function()? onEditingCompleted;
   final InputBorder? border;
   final void Function()? onTap;
@@ -28,9 +29,11 @@ class TebTextEdit extends StatefulWidget {
   final int? maxLength;
   final String mask;
   final bool upperCase;
+  final EdgeInsetsGeometry? padding;
 
   const TebTextEdit({
     Key? key,
+    this.width,
     this.context,
     this.controller,
     required this.labelText,
@@ -54,6 +57,7 @@ class TebTextEdit extends StatefulWidget {
     this.onTap,
     this.mask = '',
     this.upperCase = false,
+    this.padding,
   }) : super(key: key);
 
   @override
@@ -70,68 +74,73 @@ class _TebTextEditState extends State<TebTextEdit> {
       maskFormatter = MaskTextInputFormatter(mask: widget.mask);
     }
 
-    var widgetResult = GestureDetector(
-      onTap: widget.onTap,
-      child: Column(
-        children: [
-          const SizedBox(height: 8),
-          TextFormField(
-            textCapitalization: widget.upperCase ? TextCapitalization.characters : TextCapitalization.none,
-            inputFormatters: widget.mask.isEmpty ? null : [maskFormatter],
-            enabled: widget.enabled,
-            obscureText: !widget.isPassword ? false : _hidePassword,
-            // use text editor only if keyboardType wasn´t set.
-            keyboardType:
-                widget.isPassword && widget.keyboardType == null ? TextInputType.text : widget.keyboardType ?? TextInputType.text,
-            onSaved: (value) {
-              if (widget.onSave != null) {
-                var finalValue = value;
-                if (widget.mask.isNotEmpty) {
-                  finalValue = maskFormatter.unmaskText(finalValue ?? '');
+    var widgetResult = Padding(
+      padding: widget.padding ?? const EdgeInsets.all(0),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Column(
+          children: [
+            const SizedBox(height: 8),
+            TextFormField(
+              textCapitalization: widget.upperCase ? TextCapitalization.characters : TextCapitalization.none,
+              inputFormatters: widget.mask.isEmpty ? null : [maskFormatter],
+              enabled: widget.enabled,
+              obscureText: !widget.isPassword ? false : _hidePassword,
+              // use text editor only if keyboardType wasn´t set.
+              keyboardType: widget.isPassword && widget.keyboardType == null
+                  ? TextInputType.text
+                  : widget.keyboardType ?? TextInputType.text,
+              onSaved: (value) {
+                if (widget.onSave != null) {
+                  var finalValue = value;
+                  if (widget.mask.isNotEmpty) {
+                    finalValue = maskFormatter.unmaskText(finalValue ?? '');
+                  }
+                  widget.onSave!(finalValue);
                 }
-                widget.onSave!(finalValue);
-              }
-            },
-            onChanged: (value) {
-              if (widget.onChanged != null) {
-                var finalValue = value;
-                if (widget.mask.isNotEmpty) {
-                  finalValue = maskFormatter.getUnmaskedText();
+              },
+              onChanged: (value) {
+                if (widget.onChanged != null) {
+                  var finalValue = value;
+                  if (widget.mask.isNotEmpty) {
+                    finalValue = maskFormatter.getUnmaskedText();
+                  }
+                  widget.onChanged!(finalValue);
                 }
-                widget.onChanged!(finalValue);
-              }
-            },
-            onEditingComplete: widget.onEditingCompleted,
-            initialValue: widget.inicialValue,
-            textInputAction: widget.textInputAction,
-            onFieldSubmitted:
-                widget.nextFocusNode == null ? null : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode),
-            focusNode: widget.focusNode,
-            validator: widget.validator,
-            controller: widget.controller,
-            maxLines: widget.maxLines,
-            maxLength: widget.maxLength,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: widget.fillColor,
-              prefixIcon: widget.prefixIcon == null ? null : Icon(widget.prefixIcon),
-              // set if password should be visible
-              suffixIcon: !widget.isPassword
-                  ? null
-                  : GestureDetector(
-                      onTap: () {
-                        _hidePassword = !_hidePassword;
-                        setState(() {});
-                      },
-                      child: Icon(
-                          _hidePassword ? const FaIcon(FontAwesomeIcons.eyeSlash).icon : const FaIcon(FontAwesomeIcons.eye).icon),
-                    ),
-              hintText: widget.hintText,
-              labelText: widget.labelText,
-              border: widget.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
+              },
+              onEditingComplete: widget.onEditingCompleted,
+              initialValue: widget.inicialValue,
+              textInputAction: widget.textInputAction,
+              onFieldSubmitted:
+                  widget.nextFocusNode == null ? null : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode),
+              focusNode: widget.focusNode,
+              validator: widget.validator,
+              controller: widget.controller,
+              maxLines: widget.maxLines,
+              maxLength: widget.maxLength,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: widget.fillColor,
+                prefixIcon: widget.prefixIcon == null ? null : Icon(widget.prefixIcon),
+                // set if password should be visible
+                suffixIcon: !widget.isPassword
+                    ? null
+                    : GestureDetector(
+                        onTap: () {
+                          _hidePassword = !_hidePassword;
+                          setState(() {});
+                        },
+                        child: Icon(_hidePassword
+                            ? const FaIcon(FontAwesomeIcons.eyeSlash).icon
+                            : const FaIcon(FontAwesomeIcons.eye).icon),
+                      ),
+                hintText: widget.hintText,
+                labelText: widget.labelText,
+                border: widget.border ?? OutlineInputBorder(borderRadius: BorderRadius.circular(1)),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 
@@ -139,6 +148,13 @@ class _TebTextEditState extends State<TebTextEdit> {
     //widget.controller!.value = maskFormatter.updateMask(mask: widget.mask);
     //}
 
-    return widgetResult;
+    if (widget.width != null) {
+      return SizedBox(
+        width: widget.width,
+        child: widgetResult,
+      );
+    } else {
+      return widgetResult;
+    }
   }
 }

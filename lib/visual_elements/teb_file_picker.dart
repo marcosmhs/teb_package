@@ -9,7 +9,7 @@ import 'package:http_parser/http_parser.dart';
 class TebFilePickerWeb extends StatefulWidget {
   final String buttonLabel;
   final FaIcon? icon;
-  final void Function(String)? getStatus;
+  final void Function(String status)? getStatus;
   final FileType fileType;
   final List<String>? allowedExtensions;
   final void Function(MemoryImage) onPicked;
