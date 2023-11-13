@@ -12,7 +12,7 @@ class TebTextEdit extends StatefulWidget {
   final bool enabled;
   final bool isPassword;
   final BuildContext? context;
-  final String? inicialValue;
+  final String? initialValue;
   final TextInputAction textInputAction;
   final TextInputType? keyboardType;
   final FocusNode? nextFocusNode;
@@ -40,7 +40,7 @@ class TebTextEdit extends StatefulWidget {
     this.hintText = '',
     this.enabled = true,
     this.isPassword = false,
-    this.inicialValue,
+    this.initialValue,
     this.textInputAction = TextInputAction.next,
     this.maxLines = 1,
     this.maxLength,
@@ -109,7 +109,7 @@ class _TebTextEditState extends State<TebTextEdit> {
                 }
               },
               onEditingComplete: widget.onEditingCompleted,
-              initialValue: widget.inicialValue,
+              initialValue: widget.initialValue,
               textInputAction: widget.textInputAction,
               onFieldSubmitted:
                   widget.nextFocusNode == null ? null : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode),
