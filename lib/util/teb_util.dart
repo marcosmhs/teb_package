@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:restart_app/restart_app.dart';
+import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
@@ -12,6 +15,23 @@ class TebUtil {
 
   static DateTime lastDayOfMonth(DateTime date) {
     return DateTime(date.year, date.month + 1, 0);
+  }
+
+  static String colorToHex(Color color) {
+    if (color.value == 0) return '';
+    return '#FF${color.value.toRadixString(16).substring(2, 8)}'.toUpperCase();
+  }
+
+  static Color hexStringToColor(String hexValue) {
+    hexValue = hexValue.toUpperCase().replaceAll("#", "");
+    if (hexValue.length == 6) {
+      hexValue = "FF$hexValue";
+    }
+    if (int.tryParse(hexValue, radix: 16) == null) {
+      return Colors.transparent;
+    }
+    
+    return Color(int.parse(hexValue, radix: 16));
   }
 
   static int countSundays(DateTime start, DateTime end) {
