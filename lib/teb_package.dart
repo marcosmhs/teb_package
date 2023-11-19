@@ -1,6 +1,6 @@
 library teb_package;
 
-export 'access_log/access_log_controller.dart';
+export 'log/access_log/access_log_controller.dart';
 
 export 'messaging/teb_custom_dialog.dart';
 export 'messaging/teb_custom_message.dart';
@@ -32,3 +32,7 @@ export 'visual_elements/fa_icons_picker/teb_fa_icons_dialog.dart';
 export 'visual_elements/fa_icons_picker/teb_fa_icons_picker.dart';
 
 export 'visual_elements/material_color_picker/teb_material_color_picker.dart';
+
+export 'theme/teb_theme_controller.dart';
+
+export 'local_storage/teb_local_storage.dart';

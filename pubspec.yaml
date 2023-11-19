@@ -26,6 +26,10 @@ dependencies:
   device_info_plus: ^9.1.0
   ipapi: ^1.0.2
   url_launcher: ^6.1.14  
+
+  json_theme: ^6.3.2
+  
+  shared_preferences: ^2.2.2
   
   # image 
   file_picker: ^6.0.0

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:restart_app/restart_app.dart';
@@ -30,7 +28,7 @@ class TebUtil {
     if (int.tryParse(hexValue, radix: 16) == null) {
       return Colors.transparent;
     }
-    
+
     return Color(int.parse(hexValue, radix: 16));
   }
 

@@ -3,8 +3,8 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:ipapi/api.dart';
-import 'package:teb_package/access_log/access_data.dart';
-import 'package:teb_package/access_log/access_log_plataform_info.dart';
+import 'package:teb_package/log/access_log/access_data.dart';
+import 'package:teb_package/log/access_log/access_log_plataform_info.dart';
 
 enum DeviceType { mobile, desktop, none }
 
