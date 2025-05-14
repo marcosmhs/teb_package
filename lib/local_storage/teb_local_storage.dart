@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // ignore: depend_on_referenced_packages
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TebLocalStorage {
@@ -22,9 +23,16 @@ class TebLocalStorage {
   }
 
   static Future<String> readString({required String key, String defaultValue = ''}) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
 
-    return sharedPreferences.getString(key) ?? defaultValue;
+      return sharedPreferences.getString(key) ?? defaultValue;
+    } catch (e) {
+      if (kDebugMode) {
+        print("readString : ${e.toString()}");
+      }
+      return e.toString();
+    }
   }
 
   static Future<bool> readBool({required String key, bool defaultValue = false}) async {
@@ -36,8 +44,12 @@ class TebLocalStorage {
 
   static Future<Map<String, dynamic>> readMap({required String key}) async {
     try {
-      return jsonDecode(await readString(key: key));
-    } catch (_) {
+      var r = await readString(key: key);
+      return jsonDecode(r);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
       return {};
     }
   }

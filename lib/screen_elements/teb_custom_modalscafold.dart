@@ -5,10 +5,10 @@ class TebCustomModalScafold extends StatelessWidget {
   final String title;
 
   const TebCustomModalScafold({
-    Key? key,
+    super.key,
     this.title = '',
     required this.body,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

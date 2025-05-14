@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:teb_package/visual_elements/teb_text.dart';
 
 class TebMonthContainer extends StatelessWidget {
   const TebMonthContainer({
-    Key? key,
+    super.key,
     required this.month,
     required this.selected,
-  }) : super(key: key);
+  });
 
   final bool selected;
   final String month;
@@ -16,16 +17,14 @@ class TebMonthContainer extends StatelessWidget {
       height: 25,
       width: 60,
       decoration: BoxDecoration(
-        color: selected ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
+        color: selected ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Center(
-        child: Text(
+        child: TebText(
           month,
-          style: TextStyle(
-            fontSize: 20,
-            color: selected ? Theme.of(context).cardColor : Theme.of(context).primaryColor,
-          ),
+          textSize: 20,
+          textColor: selected ? Theme.of(context).cardColor : Theme.of(context).colorScheme.inversePrimary,
         ),
       ),
     );

@@ -43,8 +43,8 @@ class TebFaIconPicker {
                     padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: Center(
                       child: SizedBox(
-                        height: kIsWeb ? MediaQuery.of(context).size.height * 0.50 : MediaQuery.of(context).size.height * 0.53,
-                        width: kIsWeb ? MediaQuery.of(context).size.width * 0.40 : MediaQuery.of(context).size.width * 0.80,
+                        height: kIsWeb ? MediaQuery.of(context).size.height * 0.55 : MediaQuery.of(context).size.height * 0.58,
+                        width: kIsWeb ? MediaQuery.of(context).size.width * 0.45 : MediaQuery.of(context).size.width * 0.85,
                         child: GridView.builder(
                           itemCount: iconsList.length,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),

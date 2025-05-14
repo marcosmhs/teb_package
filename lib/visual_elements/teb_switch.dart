@@ -10,13 +10,13 @@ class TebSwitch extends StatefulWidget {
   final void Function(bool?)? onChanged;
 
   const TebSwitch({
-    Key? key,
+    super.key,
     required this.context,
     required this.value,
     required this.title,
     required this.onChanged,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   @override
   State<TebSwitch> createState() => _TebSwitchState();

@@ -23,7 +23,7 @@ class TebDropBox extends StatefulWidget {
   final IconData? buttonIcon;
   final TebDropBoxData? inicialValue;
   const TebDropBox({
-    Key? key,
+    super.key,
     required this.context,
     required this.onClose,
     required this.data,
@@ -33,7 +33,7 @@ class TebDropBox extends StatefulWidget {
     this.buttonIcon,
     this.color,
     this.inicialValue,
-  }) : super(key: key);
+  });
 
   @override
   State<TebDropBox> createState() => _TebDropBoxState();
@@ -59,7 +59,7 @@ class _TebDropBoxState extends State<TebDropBox> {
     );
   }
 
-_openModalSelectionList() {
+  _openModalSelectionList() {
     showModalBottomSheet(
       isScrollControlled: true,
       isDismissible: true,
@@ -83,11 +83,9 @@ _openModalSelectionList() {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              if (widget.title != '')
-                Divider(thickness: 1, indent: 10, endIndent: 10, color: Theme.of(context).primaryColor),
+              if (widget.title != '') Divider(thickness: 1, indent: 10, endIndent: 10, color: Theme.of(context).primaryColor),
               if (widget.title != '') Text(widget.title, style: Theme.of(context).textTheme.headlineSmall),
-              if (widget.title != '')
-                Divider(thickness: 1, indent: 10, endIndent: 10, color: Theme.of(context).primaryColor),
+              if (widget.title != '') Divider(thickness: 1, indent: 10, endIndent: 10, color: Theme.of(context).primaryColor),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.6,
                 child: SingleChildScrollView(
@@ -160,8 +158,7 @@ _openModalSelectionList() {
           children: [
             if (widget.buttonIcon != null || (_selectedValue != null && _selectedValue!.icon != null))
               Icon(_selectedValue != null ? _selectedValue!.icon : widget.buttonIcon),
-            if (widget.buttonIcon != null || (_selectedValue != null && _selectedValue!.icon != null))
-              const SizedBox(width: 5),
+            if (widget.buttonIcon != null || (_selectedValue != null && _selectedValue!.icon != null)) const SizedBox(width: 5),
             Text(_selectedValue == null ? widget.buttonText : _selectedValue!.displayValue),
           ],
         ),

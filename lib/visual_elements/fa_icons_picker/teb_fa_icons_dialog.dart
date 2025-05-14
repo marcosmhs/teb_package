@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TebFaIconDialog extends StatelessWidget {
-  const TebFaIconDialog({Key? key, required this.backgroundColor, required this.child}) : super(key: key);
+  const TebFaIconDialog({super.key, required this.backgroundColor, required this.child});
 
   final Widget child;
   final Color backgroundColor;

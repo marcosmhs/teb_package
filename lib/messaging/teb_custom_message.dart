@@ -15,12 +15,8 @@ class TebCustomMessage {
     );
   }
 
-  static TebCustomMessage sucess(BuildContext context, {required String message}) {
-    return TebCustomMessage(
-      context: context,
-      messageText: message,
-      messageType: TebMessageType.sucess,
-    );
+  static TebCustomMessage sucess(BuildContext context, {required String message, Color? textColor}) {
+    return TebCustomMessage(context: context, messageText: message, messageType: TebMessageType.sucess, textColor: textColor);
   }
 
   static TebCustomMessage errorToast(BuildContext context, {required String message}) {
@@ -52,7 +48,7 @@ class TebCustomMessage {
     if (textColor != null) {
       txtColor = textColor;
     } else {
-      txtColor = messageType == TebMessageType.error ? Colors.white : Theme.of(context).textTheme.bodyLarge!.color!;
+      txtColor = messageType == TebMessageType.error ? Colors.white : Theme.of(context).canvasColor;
     }
 
     if (backgroundColor != null) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TebMaterialColorPickerDialog extends StatelessWidget {
-  const TebMaterialColorPickerDialog({super.key, required this.child});
+class TebCustomModalDialog extends StatelessWidget {
+  const TebCustomModalDialog({super.key, required this.child});
 
   final Widget child;
 

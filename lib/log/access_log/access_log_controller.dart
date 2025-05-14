@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:ipapi/api.dart';
+import 'package:ipapi/ipapi.dart';
+
 import 'package:teb_package/log/access_log/access_data.dart';
 import 'package:teb_package/log/access_log/access_log_plataform_info.dart';
 

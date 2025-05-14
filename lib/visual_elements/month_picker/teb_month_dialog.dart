@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TebMonthDialog extends StatelessWidget {
-  const TebMonthDialog({Key? key, required this.child}) : super(key: key);
+  const TebMonthDialog({super.key, required this.child});
 
   final Widget child;
 

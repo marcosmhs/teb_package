@@ -14,40 +14,43 @@ class TebCustomScaffold extends StatelessWidget {
   final Widget? endDrawer;
   final PreferredSizeWidget? appBar;
   final bool responsive;
+  final int minWebViewWidth;
+  final double? fixedWidth;
 
-  const TebCustomScaffold(
-      {Key? key,
-      this.title,
-      this.drawer,
-      this.endDrawer,
-      this.showAppBar = true,
-      required this.body,
-      this.floatingActionButton,
-      this.showAppDrawer = true,
-      this.appBarActions,
-      this.bottomNavigationBar,
-      this.backgroundColor,
-      this.appBar,
-      this.responsive = false})
-      : super(key: key);
+  const TebCustomScaffold({
+    super.key,
+    this.title,
+    this.drawer,
+    this.endDrawer,
+    this.showAppBar = true,
+    required this.body,
+    this.floatingActionButton,
+    this.showAppDrawer = true,
+    this.appBarActions,
+    this.bottomNavigationBar,
+    this.backgroundColor,
+    this.appBar,
+    this.responsive = false,
+    this.minWebViewWidth = 600,
+    this.fixedWidth,
+  });
 
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    if (responsive && kIsWeb) {
-      width = MediaQuery.of(context).size.width > 800
-          ? MediaQuery.of(context).size.width * 0.5
-          : MediaQuery.of(context).size.width * 0.8;
+    if (fixedWidth != null) {
+      width = fixedWidth!;
+    } else {
+      if (responsive && kIsWeb) {
+        width = MediaQuery.of(context).size.width > minWebViewWidth
+            ? MediaQuery.of(context).size.width * 0.7
+            : MediaQuery.of(context).size.width * 0.9;
+      }
     }
+
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: appBar ??
-          (showAppBar
-              ? AppBar(
-                  title: title,
-                  actions: appBarActions,
-                )
-              : null),
+      appBar: appBar ?? (showAppBar ? AppBar(title: title, actions: appBarActions) : null),
       bottomNavigationBar: bottomNavigationBar,
       endDrawer: endDrawer,
       drawer: showAppDrawer ? drawer : null,

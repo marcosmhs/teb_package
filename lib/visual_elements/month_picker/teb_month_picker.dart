@@ -32,6 +32,7 @@ class TebMonthPicker {
 
   static Future<DateTime> showMonthYearPickerDialog({
     required BuildContext context,
+    Size? size,
   }) async {
     final ThemeData theme = Theme.of(context);
     var primaryColor = theme.primaryColor;
@@ -45,11 +46,20 @@ class TebMonthPicker {
     await showDialog<DateTime>(
       context: context,
       builder: (_) {
+        var localSize = MediaQuery.of(context).size;
         return StatefulBuilder(builder: (context, setState) {
           return TebMonthDialog(
             child: SizedBox(
-              height: kIsWeb ? MediaQuery.of(context).size.height * 0.50 : MediaQuery.of(context).size.height * 0.53,
-              width: kIsWeb ? MediaQuery.of(context).size.width * 0.45 : MediaQuery.of(context).size.width * 0.85,
+              height: size != null
+                  ? size.height
+                  : kIsWeb
+                      ? localSize.height * 0.50
+                      : localSize.height * 0.53,
+              width: size != null
+                  ? size.width
+                  : kIsWeb
+                      ? localSize.width * 0.45
+                      : localSize.width * 0.85,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // titulo
@@ -86,8 +96,8 @@ class TebMonthPicker {
                     padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: Center(
                       child: SizedBox(
-                        height: 250,
-                        width: 300,
+                        height: size == null ? 250 : size.height * 0.7,
+                        width: size == null ? 300 : size.width * 0.9,
                         child: GridView.builder(
                           itemCount: _monthStructureList.length,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),

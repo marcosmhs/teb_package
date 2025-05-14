@@ -23,11 +23,13 @@ class TebCustomDialog {
   Future<bool?> confirmationDialog({
     required String message,
     Color? yesButtonHighlightColor,
+    Color? backgroundColor,
     String yesButtonText = 'Sim',
     String noButtonText = 'Não',
   }) async {
     return await customdialog(
       message: message,
+      backgroundColor: backgroundColor,
       yesButtonText: yesButtonText,
       noButtonText: noButtonText,
       yesButtonColor: yesButtonHighlightColor,
@@ -51,6 +53,7 @@ class TebCustomDialog {
     required String yesButtonText,
     required String noButtonText,
     bool? yesButtonValue = true,
+    Color? backgroundColor,
     Color? yesButtonColor,
     Icon? icon,
   }) {
@@ -59,6 +62,7 @@ class TebCustomDialog {
     return showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
+        backgroundColor: backgroundColor,
         content: Row(
           children: [
             icon ?? Container(),
@@ -74,7 +78,7 @@ class TebCustomDialog {
             ),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(yesButtonValue),
-            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(yesBtnColor)),
+            style: ButtonStyle(backgroundColor: WidgetStateProperty.all(yesBtnColor)),
             child: Text(yesButtonText),
           )
         ],

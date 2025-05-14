@@ -56,7 +56,7 @@ class AccessData {
       providerName: geoData.isp,
       oganizationName: geoData.org,
       latitude: geoData.lat,
-      longitude: geoData.long,
+      longitude: geoData.lon,
       ipAdress: geoData.query,
       timezone: geoData.timezone,
       mobile: geoData.mobile ?? false,

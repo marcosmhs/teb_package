@@ -104,7 +104,7 @@ class TebMaterialColorPicker {
 
             for (List<Color> colors in TebMaterialColorConsts.colors) {
               TebMaterialColorConsts.colorShadings(colors).forEach((colorShade) {
-                if (pickedColor.value == colorShade.value) {
+                if (pickedColor.toARGB32() == colorShade.toARGB32()) {
                   return setState(() {
                     currentColor = colors;
                     currentShading = colorShade;
@@ -169,7 +169,7 @@ class TebMaterialColorPicker {
                   SizedBox(
                     width: 130,
                     child: Material(
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                       child: TebTextEdit(
                         labelText: 'Customizado',
                         controller: colorHexController,
@@ -229,10 +229,7 @@ class TebMaterialColorPicker {
                           header,
                           Expanded(
                             child: Row(
-                              children: [
-                                colorList,
-                                Expanded(child: shadingList),
-                              ],
+                              children: [colorList, Expanded(child: shadingList)],
                             ),
                           ),
                           bottonOptions,
@@ -244,12 +241,7 @@ class TebMaterialColorPicker {
                       height: 450,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          header,
-                          colorList,
-                          Expanded(child: shadingList),
-                          bottonOptions,
-                        ],
+                        children: [header, colorList, Expanded(child: shadingList), bottonOptions],
                       ),
                     ),
             );

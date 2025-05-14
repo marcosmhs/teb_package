@@ -11,14 +11,14 @@ class TebCheckBox extends StatefulWidget {
   final void Function(bool?)? onChanged;
 
   const TebCheckBox({
-    Key? key,
+    super.key,
     required this.context,
     required this.value,
     required this.title,
     this.subTitle = '',
     required this.onChanged,
     this.enabled = true,
-  }) : super(key: key);
+  });
 
   @override
   State<TebCheckBox> createState() => _TebCheckBoxState();
@@ -28,6 +28,7 @@ class _TebCheckBoxState extends State<TebCheckBox> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
+      
       title: Text(widget.title),
       value: widget.value,
       onChanged: widget.onChanged,

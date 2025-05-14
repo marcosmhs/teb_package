@@ -1,11 +1,9 @@
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/foundation.dart';
 
 class AccessLogPlataformInfo {
-  
   static Map<String, dynamic> readWebBrowserInfo(WebBrowserInfo data) {
     return <String, dynamic>{
-      'browserName': describeEnum(data.browserName),
+      'browserName': data.browserName.name,
       'appCodeName': data.appCodeName,
       'appName': data.appName,
       'appVersion': data.appVersion,
@@ -142,5 +140,4 @@ class AccessLogPlataformInfo {
       'deviceId': data.deviceId,
     };
   }
-
 }

@@ -13,6 +13,7 @@ export 'util/teb_url_manager.dart';
 export 'screen_elements/teb_custom_loading.dart';
 export 'screen_elements/teb_custom_modalscafold.dart';
 export 'screen_elements/teb_custom_scaffold.dart';
+export 'screen_elements/teb_custom_modal_dialog.dart';
 
 export 'visual_elements/teb_buttons_line.dart';
 export 'visual_elements/teb_checkbox.dart';
