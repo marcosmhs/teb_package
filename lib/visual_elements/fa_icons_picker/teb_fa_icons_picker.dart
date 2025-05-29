@@ -11,10 +11,14 @@ class TebFaIconPicker {
     required Color backgroundColor,
     required Color specialColor,
     Color? iconColor,
+    bool fullScreen = false,
+    bool showIconName = false,
   }) async {
     IconData? selectedIcon;
 
     var iconsList = faIconDataList;
+
+    var size = MediaQuery.of(context).size;
 
     await showDialog<IconData?>(
       context: context,
@@ -23,8 +27,16 @@ class TebFaIconPicker {
           return TebFaIconDialog(
             backgroundColor: backgroundColor,
             child: SizedBox(
-              height: kIsWeb ? MediaQuery.of(context).size.height * 0.70 : MediaQuery.of(context).size.height * 0.72,
-              width: kIsWeb ? MediaQuery.of(context).size.width * 0.45 : MediaQuery.of(context).size.width * 0.85,
+              height: fullScreen
+                  ? size.height * 0.98
+                  : kIsWeb
+                      ? size.height * 0.70
+                      : size.height * 0.72,
+              width: fullScreen
+                  ? size.width * 0.98
+                  : kIsWeb
+                      ? size.width * 0.45
+                      : size.width * 0.85,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -43,8 +55,16 @@ class TebFaIconPicker {
                     padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                     child: Center(
                       child: SizedBox(
-                        height: kIsWeb ? MediaQuery.of(context).size.height * 0.55 : MediaQuery.of(context).size.height * 0.58,
-                        width: kIsWeb ? MediaQuery.of(context).size.width * 0.45 : MediaQuery.of(context).size.width * 0.85,
+                        height: fullScreen
+                            ? size.height * 0.78
+                            : kIsWeb
+                                ? MediaQuery.of(context).size.height * 0.55
+                                : MediaQuery.of(context).size.height * 0.58,
+                        width: fullScreen
+                            ? size.width * 0.97
+                            : kIsWeb
+                                ? MediaQuery.of(context).size.width * 0.45
+                                : MediaQuery.of(context).size.width * 0.85,
                         child: GridView.builder(
                           itemCount: iconsList.length,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),
@@ -64,13 +84,14 @@ class TebFaIconPicker {
                                     child: Column(
                                       children: [
                                         FaIcon(faIconData.iconData, color: iconColor),
-                                        const Spacer(),
-                                        TebText(
-                                          faIconData.title.length > 12
-                                              ? '${faIconData.title.substring(0, 12)}...'
-                                              : faIconData.title,
-                                          textAlign: TextAlign.center,
-                                        ),
+                                        if (showIconName) const Spacer(),
+                                        if (showIconName)
+                                          TebText(
+                                            faIconData.title.length > 12
+                                                ? '${faIconData.title.substring(0, 12)}...'
+                                                : faIconData.title,
+                                            textAlign: TextAlign.center,
+                                          ),
                                       ],
                                     ),
                                   ),
