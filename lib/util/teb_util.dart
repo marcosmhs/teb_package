@@ -6,18 +6,11 @@ import 'package:flutter/material.dart' as flutter;
 
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:teb_package/util/map.dart';
 
 enum TextWidth { tw2, tw4, tw6, tw8, tw10, tw12, tw14, tw16, tw18, tw20 }
 
 class TebUtil {
-  static DateTime firstDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month, 1);
-  }
-
-  static DateTime lastDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month + 1, 0);
-  }
-
   static String colorToHex(flutter.Color color) {
     if (color.toARGB32() == 0) return '';
     return '#FF${color.toARGB32().toRadixString(16).substring(2, 8)}'.toUpperCase();
@@ -35,39 +28,8 @@ class TebUtil {
     return flutter.Color(int.parse(hexValue, radix: 16));
   }
 
-  static int countSundays(DateTime start, DateTime end) {
-    int count = 0;
-    DateTime currentDate = start;
-
-    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
-      if (currentDate.weekday == DateTime.sunday) {
-        count++;
-      }
-      currentDate = currentDate.add(const Duration(days: 1));
-    }
-
-    return count;
-  }
-
-  static List<DateTime> getSundayList(DateTime start, DateTime end) {
-    DateTime currentDate = start;
-
-    List<DateTime> sundayCount = [];
-
-    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
-      if (currentDate.weekday == DateTime.sunday) sundayCount.add(currentDate);
-      currentDate = currentDate.add(const Duration(days: 1));
-    }
-
-    return sundayCount;
-  }
-
   static void restartApplication() {
     Restart.restartApp();
-  }
-
-  static String dateTimeFormat({required DateTime date, String mask = 'dd/MM/yyyy'}) {
-    return DateFormat(mask).format(date);
   }
 
   static String formatedCurrencyValue({required double value, bool showSignal = false}) {
@@ -145,11 +107,59 @@ class TebUtil {
     return result;
   }
 
+  static String removeDiacritics(String text) =>
+      String.fromCharCodes(replaceCodeUnits(text.codeUnits));
+
+  // DateTime functions
+
+  static DateTime getOnlyDate(DateTime dateTime) {
+    return DateTime(dateTime.year, dateTime.month, dateTime.day);
+  }
+
+  static String dateTimeFormat({required DateTime date, String mask = 'dd/MM/yyyy'}) {
+    return DateFormat(mask).format(date);
+  }
+
   static bool isDateEqual(DateTime? a, DateTime? b) {
     if (a == null || b == null) {
       return false;
     }
 
     return a.year == b.year && a.month == b.month && a.day == b.day;
+  }
+
+  static int countSundays(DateTime start, DateTime end) {
+    int count = 0;
+    DateTime currentDate = start;
+
+    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
+      if (currentDate.weekday == DateTime.sunday) {
+        count++;
+      }
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+
+    return count;
+  }
+
+  static List<DateTime> getSundayList(DateTime start, DateTime end) {
+    DateTime currentDate = start;
+
+    List<DateTime> sundayCount = [];
+
+    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
+      if (currentDate.weekday == DateTime.sunday) sundayCount.add(currentDate);
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+
+    return sundayCount;
+  }
+
+  static DateTime firstDayOfMonth(DateTime date) {
+    return DateTime(date.year, date.month, 1);
+  }
+
+  static DateTime lastDayOfMonth(DateTime date) {
+    return DateTime(date.year, date.month + 1, 0);
   }
 }

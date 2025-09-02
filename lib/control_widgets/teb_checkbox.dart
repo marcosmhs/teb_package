@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teb_package/control_widgets/teb_text.dart';
 
 enum DisplayMode { dialog, modal }
 
@@ -28,8 +29,7 @@ class _TebCheckBoxState extends State<TebCheckBox> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      
-      title: Text(widget.title),
+      title: TebText(widget.title),
       value: widget.value,
       onChanged: widget.onChanged,
       enabled: widget.enabled,

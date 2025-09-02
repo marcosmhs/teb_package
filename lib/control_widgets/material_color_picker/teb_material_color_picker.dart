@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:teb_package/teb_package.dart';
-import 'package:teb_package/visual_elements/material_color_picker/material_color_consts.dart';
-import 'package:teb_package/visual_elements/material_color_picker/teb_material_color_picker_dialog.dart';
+import 'package:teb_package/control_widgets/material_color_picker/material_color_consts.dart';
+import 'package:teb_package/control_widgets/material_color_picker/teb_material_color_picker_dialog.dart';
 
 class TebMaterialColorPicker {
   static Future<Color> showColorPicker({

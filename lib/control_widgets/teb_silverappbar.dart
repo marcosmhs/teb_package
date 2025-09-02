@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teb_package/visual_elements/teb_text.dart';
+import 'package:teb_package/control_widgets/teb_text.dart';
 
 /// A custom [StatefulWidget] that represents a Silver AppBar for the application.
 ///

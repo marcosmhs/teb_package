@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
+import 'package:teb_package/control_widgets/teb_text.dart';
 
 typedef OnSelectedValue<DateTime> = void Function(DateTime? date);
 
@@ -12,6 +13,7 @@ class TebDateTimeSelector extends StatefulWidget {
   final String? displayName;
   final String? buttonText;
   final String? errorMessage;
+  final double? textSize;
   final OnSelectedValue<DateTime?> onSelected;
   final EdgeInsetsGeometry? padding;
   final bool enabled;
@@ -28,6 +30,7 @@ class TebDateTimeSelector extends StatefulWidget {
     this.buttonText,
     this.onOpenDateSelector,
     this.enabled = true,
+    this.textSize,
     this.setSelectedDateOnStart = true,
   });
 
@@ -57,17 +60,17 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.initialValue != null && selectedDate == null && widget.setSelectedDateOnStart) {
-      setState(() {
-        selectedDate = widget.initialValue;
-        widget.onSelected(selectedDate);
-      });
+    if (selectedDate == null && widget.initialValue != null) selectedDate = widget.initialValue;
+
+    if (selectedDate == null && widget.setSelectedDateOnStart) {
+      setState(() => widget.onSelected(selectedDate));
     }
     return Padding(
       padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 2),
       child: Container(
-        decoration:
-            widget.errorMessage != '' ? BoxDecoration(border: Border.all(color: Theme.of(widget.ctx).colorScheme.error)) : null,
+        decoration: widget.errorMessage != ''
+            ? BoxDecoration(border: Border.all(color: Theme.of(widget.ctx).colorScheme.error))
+            : null,
         constraints: BoxConstraints(maxWidth: MediaQuery.of(widget.ctx).size.width),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
@@ -76,17 +79,16 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    selectedDate == null
-                        ? widget.displayName ?? 'Data:'
-                        : '${widget.displayName ?? 'Data: '}: ${DateFormat('dd/MM/yyyy').format(selectedDate!)}',
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TebText(widget.displayName ?? 'Data', textWeight: FontWeight.bold, textSize: widget.textSize),
+                      if (selectedDate != null)
+                        TebText(DateFormat('dd/MM/yyyy').format(selectedDate!), textSize: widget.textSize),
+                    ],
                   ),
                   const Expanded(child: SizedBox()),
-                  if (widget.enabled)
-                    ElevatedButton(
-                      onPressed: _selectDate,
-                      child: Text(widget.buttonText ?? 'Selecionar'),
-                    ),
+                  if (widget.enabled) ElevatedButton(onPressed: _selectDate, child: Text(widget.buttonText ?? 'Selecionar')),
                 ],
               ),
               if (widget.errorMessage != '')
@@ -94,14 +96,14 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
+                    child: TebText(
                       widget.errorMessage!,
-                      style: Theme.of(widget.ctx).textTheme.bodySmall!.merge(
-                            TextStyle(color: Theme.of(widget.ctx).colorScheme.error),
-                          ),
+                      style: Theme.of(
+                        widget.ctx,
+                      ).textTheme.bodySmall!.merge(TextStyle(color: Theme.of(widget.ctx).colorScheme.error)),
                     ),
                   ),
-                )
+                ),
             ],
           ),
         ),

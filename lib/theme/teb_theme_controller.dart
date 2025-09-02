@@ -45,15 +45,12 @@ class TebThemeController {
   ///
   /// Método do tipo future que responsável por fazer a leitura dos arquivos json
   /// informados na criação da classe
-  Future<TebCustomReturn> get loadThemeData async {
+  Future<TebReturn> get loadThemeData async {
     try {
       if ((lightThemeAssetPath ?? '').isNotEmpty) {
         var lightThemeStr = await rootBundle.loadString(lightThemeAssetPath!);
         var lightThemeJson = json.decode(lightThemeStr);
-        _lightThemeData = ThemeDecoder.decodeThemeData(
-          lightThemeJson,
-          validate: true,
-        );
+        _lightThemeData = ThemeDecoder.decodeThemeData(lightThemeJson, validate: true);
         if (_lightThemeData == null) {
           _lightThemeData = ThemeData.light(useMaterial3: useMaterial3);
           if (useDebugLog && fireStoreInstance != null) {
@@ -63,17 +60,14 @@ class TebThemeController {
               message: 'Erro ao ler o ${lightThemeAssetPath!}',
             );
           }
-          return TebCustomReturn.error('Erro ao ler o ${lightThemeAssetPath!}');
+          return TebReturn.error('Erro ao ler o ${lightThemeAssetPath!}');
         }
       }
 
       if ((darkThemeAssetPath ?? '').isNotEmpty) {
         var darkThemeStr = await rootBundle.loadString(darkThemeAssetPath!);
         var darkThemeJson = json.decode(darkThemeStr);
-        _darkThemeData = ThemeDecoder.decodeThemeData(
-          darkThemeJson,
-          validate: true,
-        );
+        _darkThemeData = ThemeDecoder.decodeThemeData(darkThemeJson, validate: true);
         if (_darkThemeData == null) {
           _darkThemeData = ThemeData.dark(useMaterial3: useMaterial3);
           if (useDebugLog && fireStoreInstance != null) {
@@ -83,20 +77,16 @@ class TebThemeController {
               message: 'Erro ao ler o ${darkThemeAssetPath!}',
             );
           }
-          return TebCustomReturn.error('Erro ao ler o ${darkThemeAssetPath!}');
+          return TebReturn.error('Erro ao ler o ${darkThemeAssetPath!}');
         }
       }
 
-      return TebCustomReturn.sucess;
+      return TebReturn.sucess;
     } catch (e) {
       if (useDebugLog && fireStoreInstance != null) {
-        TebDebugLog(
-          fireStoreInstance: fireStoreInstance!,
-          group: 'TebThemeController',
-          message: e.toString(),
-        );
+        TebDebugLog(fireStoreInstance: fireStoreInstance!, group: 'TebThemeController', message: e.toString());
       }
-      return TebCustomReturn.error(e.toString());
+      return TebReturn.error(e.toString());
     }
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:teb_package/teb_package.dart';
-import 'package:teb_package/visual_elements/fa_icons_picker/teb_fa_icons_list.dart';
+import 'package:teb_package/control_widgets/fa_icons_picker/teb_fa_icons_list.dart';
 
 class TebFaIconPicker {
   static Future<IconData?> showFaIconPickerDialog({

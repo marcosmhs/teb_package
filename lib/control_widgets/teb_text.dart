@@ -41,12 +41,14 @@ class TebText extends StatelessWidget {
   final FontWeight? textWeight;
   final EdgeInsets? padding;
   final TextAlign? textAlign;
-  final FontStyle? textStyle;
+  final FontStyle? fontStyle;
   final TextOverflow? overflow;
   final TextStyle? style;
   final int? maxLines;
   final TextWidth? textWidth;
   final TextType textType;
+  final bool strikethrough;
+  final void Function()? onTap;
 
   const TebText(
     this.text, {
@@ -59,33 +61,33 @@ class TebText extends StatelessWidget {
     this.padding,
     this.textAlign,
     this.overflow,
-    this.textStyle,
+    this.fontStyle,
     this.style,
     this.maxLines,
     this.textWidth,
     this.textType = TextType.plainText,
+    this.onTap,
+    this.strikethrough = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    Widget textWidget;
+    final TextStyle finalTextStyle =
+        (style ?? Theme.of(context).textTheme.bodyMedium ?? const TextStyle()).copyWith(
+          color: textColor,
+          fontSize: textSize,
+          letterSpacing: letterSpacing,
+          wordSpacing: wordSpacing,
+          fontWeight: textWeight,
+          fontStyle: fontStyle,
+          overflow: overflow,
+          decoration: strikethrough ? TextDecoration.lineThrough : null,
+        );
+
+    Widget coreTextWidget;
 
     if (textType == TextType.plainText) {
-      textWidget = Text(
-        text,
-        textAlign: textAlign,
-        style: style ??
-            TextStyle(
-              color: textColor,
-              fontSize: textSize,
-              fontStyle: textStyle,
-              letterSpacing: letterSpacing ?? 0.10,
-              wordSpacing: wordSpacing ?? 0.10,
-              fontWeight: textWeight ?? FontWeight.w400,
-              overflow: overflow,
-            ),
-        maxLines: maxLines,
-      );
+      coreTextWidget = Text(text, textAlign: textAlign, maxLines: maxLines, style: finalTextStyle);
     } else {
       var htmlText = text;
       if (textWeight != null) {
@@ -103,24 +105,23 @@ class TebText extends StatelessWidget {
       if (textAlign == TextAlign.center) {
         htmlText = "<div style='text-align: center'>$htmlText</div>";
       }
-
-      textWidget = Html(data: htmlText);
+      coreTextWidget = Html(data: htmlText);
     }
+
+    Widget finalWidget = coreTextWidget;
 
     if (textWidth != null) {
-      textWidget = SizedBox(
-        width: TebUtil.textWidthCalculation(textWidth!),
-        child: textWidget,
-      );
+      finalWidget = SizedBox(width: TebUtil.textWidthCalculation(textWidth!), child: finalWidget);
     }
 
-    if (padding == null) {
-      return textWidget;
-    } else {
-      return Padding(
-        padding: padding ?? const EdgeInsets.all(0),
-        child: textWidget,
-      );
+    if (padding != null) {
+      finalWidget = Padding(padding: padding!, child: finalWidget);
     }
+
+    if (onTap != null) {
+      return GestureDetector(onTap: onTap, child: finalWidget);
+    }
+
+    return finalWidget;
   }
 }

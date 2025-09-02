@@ -17,13 +17,14 @@ import 'package:flutter/material.dart';
 ///   ),
 /// )
 /// ```
-class TebCustomScaffold extends StatelessWidget {
+class TebScaffold extends StatelessWidget {
   final Widget body;
   final Widget? title;
   final bool showAppDrawer;
   final bool showAppBar;
   final List<Widget>? appBarActions;
   final Widget? floatingActionButton;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
   final Widget? bottomNavigationBar;
   final Color? backgroundColor;
   final Widget? drawer;
@@ -35,13 +36,14 @@ class TebCustomScaffold extends StatelessWidget {
   final double? widthPercentage;
   final bool useCenter;
 
-  const TebCustomScaffold({
+  const TebScaffold({
     super.key,
     this.title,
     this.drawer,
     this.endDrawer,
     this.showAppBar = true,
     required this.body,
+    this.floatingActionButtonLocation,
     this.floatingActionButton,
     this.showAppDrawer = true,
     this.appBarActions,
@@ -73,7 +75,11 @@ class TebCustomScaffold extends StatelessWidget {
       }
     }
 
-    var bodyWidget = useCenter ? Center(child: SizedBox(width: width, child: body)) : SizedBox(width: width, child: body);
+    var bodyWidget = useCenter
+        ? Center(
+            child: SizedBox(width: width, child: body),
+          )
+        : SizedBox(width: width, child: body);
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -81,8 +87,9 @@ class TebCustomScaffold extends StatelessWidget {
       bottomNavigationBar: bottomNavigationBar,
       endDrawer: endDrawer,
       drawer: showAppDrawer ? drawer : null,
-      body: bodyWidget,
+      floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButton: floatingActionButton,
+      body: bodyWidget,
     );
   }
 }
