@@ -64,7 +64,7 @@ class TebTextEdit extends StatefulWidget {
   final String mask;
   final bool upperCase;
   final EdgeInsetsGeometry? padding;
-  final TextWidth? textWidth;
+  final FontWidth? fontWidth;
   // border and padding behavior
   final bool showBorder;
   final InputBorder? border;
@@ -106,7 +106,7 @@ class TebTextEdit extends StatefulWidget {
     this.mask = '',
     this.upperCase = false,
     this.padding,
-    this.textWidth,
+    this.fontWidth,
     this.isDense = true,
     this.contentPadding,
     this.enabledBorder,
@@ -142,7 +142,9 @@ class _TebTextEditState extends State<TebTextEdit> {
         children: [
           const SizedBox(height: 8),
           TextFormField(
-            textCapitalization: widget.upperCase ? TextCapitalization.characters : TextCapitalization.none,
+            textCapitalization: widget.upperCase
+                ? TextCapitalization.characters
+                : TextCapitalization.none,
             inputFormatters: widget.mask.isEmpty ? null : [maskFormatter],
             style: widget.contentTextStyle,
             enabled: widget.enabled,
@@ -174,7 +176,9 @@ class _TebTextEditState extends State<TebTextEdit> {
             textInputAction: widget.textInputAction,
             onFieldSubmitted:
                 widget.onFieldSubmitted ??
-                (widget.nextFocusNode == null ? null : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode)),
+                (widget.nextFocusNode == null
+                    ? null
+                    : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode)),
             focusNode: widget.focusNode,
             validator: widget.stringValueValidatorMessage.isEmpty
                 ? widget.validator
@@ -192,7 +196,9 @@ class _TebTextEditState extends State<TebTextEdit> {
               isDense: widget.isDense,
               contentPadding: widget.contentPadding,
 
-              prefixIcon: widget.prefixIcon == null ? null : Icon(widget.prefixIcon, color: widget.prefixIconColor),
+              prefixIcon: widget.prefixIcon == null
+                  ? null
+                  : Icon(widget.prefixIcon, color: widget.prefixIconColor),
               // set if password should be visible
               suffixIcon: !widget.isPassword
                   ? widget.suffixIcon
@@ -202,7 +208,9 @@ class _TebTextEditState extends State<TebTextEdit> {
                         setState(() {});
                       },
                       child: Icon(
-                        _hidePassword ? const Icon(FontAwesomeIcons.eyeSlash).icon : const Icon(FontAwesomeIcons.eye).icon,
+                        _hidePassword
+                            ? const Icon(FontAwesomeIcons.eyeSlash).icon
+                            : const Icon(FontAwesomeIcons.eye).icon,
                       ),
                     ),
 
@@ -225,12 +233,12 @@ class _TebTextEditState extends State<TebTextEdit> {
     //widget.controller!.value = maskFormatter.updateMask(mask: widget.mask);
     //}
 
-    if (widget.textWidth == null) {
+    if (widget.fontWidth == null) {
       if (widget.width != null) {
         return SizedBox(width: widget.width, child: textFormField);
       }
     } else {
-      return SizedBox(width: TebUtil.textWidthCalculation(widget.textWidth!), child: textFormField);
+      return SizedBox(width: TebUtil.fontWidthCalculation(widget.fontWidth!), child: textFormField);
     }
 
     if (widget.width != null) {

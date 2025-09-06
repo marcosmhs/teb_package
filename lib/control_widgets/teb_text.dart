@@ -34,10 +34,13 @@ enum TextType { plainText, html }
 
 class TebText extends StatelessWidget {
   final String text;
+  final double? fontSize;
   final double? textSize;
+  final Color? fontColor;
   final Color? textColor;
   final double? letterSpacing;
   final double? wordSpacing;
+  final FontWeight? fontWeight;
   final FontWeight? textWeight;
   final EdgeInsets? padding;
   final TextAlign? textAlign;
@@ -45,7 +48,7 @@ class TebText extends StatelessWidget {
   final TextOverflow? overflow;
   final TextStyle? style;
   final int? maxLines;
-  final TextWidth? textWidth;
+  final FontWidth? fontWidth;
   final TextType textType;
   final bool strikethrough;
   final void Function()? onTap;
@@ -53,18 +56,25 @@ class TebText extends StatelessWidget {
   const TebText(
     this.text, {
     super.key,
-    this.textColor,
-    this.textSize,
+    this.fontColor,
+    @Deprecated('Use .fontColor instead') this.textColor,
+
+    this.fontSize,
+    @Deprecated('Use .fontSize instead') this.textSize,
+
+    this.fontWeight,
+    @Deprecated('Use .fontWeight instead') this.textWeight,
+
+    this.fontWidth,
     this.letterSpacing,
     this.wordSpacing,
-    this.textWeight,
     this.padding,
     this.textAlign,
     this.overflow,
     this.fontStyle,
     this.style,
     this.maxLines,
-    this.textWidth,
+
     this.textType = TextType.plainText,
     this.onTap,
     this.strikethrough = false,
@@ -74,11 +84,11 @@ class TebText extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle finalTextStyle =
         (style ?? Theme.of(context).textTheme.bodyMedium ?? const TextStyle()).copyWith(
-          color: textColor,
-          fontSize: textSize,
+          color: fontColor ?? textColor,
+          fontSize: fontSize ?? textSize,
           letterSpacing: letterSpacing,
           wordSpacing: wordSpacing,
-          fontWeight: textWeight,
+          fontWeight: fontWeight ?? textWeight,
           fontStyle: fontStyle,
           overflow: overflow,
           decoration: strikethrough ? TextDecoration.lineThrough : null,
@@ -90,17 +100,18 @@ class TebText extends StatelessWidget {
       coreTextWidget = Text(text, textAlign: textAlign, maxLines: maxLines, style: finalTextStyle);
     } else {
       var htmlText = text;
-      if (textWeight != null) {
-        if (textWeight!.value >= 700) {
-          htmlText = '<b> $htmlText </b';
+      if ((fontWeight ?? textWeight) != null) {
+        if ((fontWeight ?? textWeight)!.value >= 700) {
+          htmlText = '<b>$htmlText</b>';
         }
       }
 
-      if (textColor != null) {
-        htmlText = "<span style='color: ${TebUtil.colorToHex(textColor!)}'> $htmlText </span>";
+      if ((fontColor ?? textColor) != null) {
+        htmlText =
+            "<span style='color: ${TebUtil.colorToHex(fontColor ?? textColor!)}'>$htmlText</span>";
       }
 
-      htmlText = "<span style='font-size: ${textSize ?? 12}px'> $htmlText </span>";
+      htmlText = "<span style='font-size: ${fontSize ?? textSize ?? 12}px'>$htmlText</span>";
 
       if (textAlign == TextAlign.center) {
         htmlText = "<div style='text-align: center'>$htmlText</div>";
@@ -110,8 +121,8 @@ class TebText extends StatelessWidget {
 
     Widget finalWidget = coreTextWidget;
 
-    if (textWidth != null) {
-      finalWidget = SizedBox(width: TebUtil.textWidthCalculation(textWidth!), child: finalWidget);
+    if (fontWidth != null) {
+      finalWidget = SizedBox(width: TebUtil.fontWidthCalculation(fontWidth!), child: finalWidget);
     }
 
     if (padding != null) {

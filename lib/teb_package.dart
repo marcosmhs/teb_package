@@ -27,8 +27,7 @@ export 'control_widgets/month_picker/teb_month_container.dart';
 export 'control_widgets/month_picker/teb_month_dialog.dart';
 export 'control_widgets/month_picker/teb_month_picker.dart';
 
-export 'control_widgets/fa_icons_picker/teb_fa_icons_dialog.dart';
-export 'control_widgets/fa_icons_picker/teb_fa_icons_picker.dart';
+export 'control_widgets/fa_icons_picker/teb_icons_picker.dart';
 
 export 'control_widgets/material_color_picker/teb_material_color_picker.dart';
 

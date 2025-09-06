@@ -82,9 +82,9 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TebText(widget.displayName ?? 'Data', textWeight: FontWeight.bold, textSize: widget.textSize),
+                      TebText(widget.displayName ?? 'Data', fontWeight: FontWeight.bold, fontSize: widget.textSize),
                       if (selectedDate != null)
-                        TebText(DateFormat('dd/MM/yyyy').format(selectedDate!), textSize: widget.textSize),
+                        TebText(DateFormat('dd/MM/yyyy').format(selectedDate!), fontSize: widget.textSize),
                     ],
                   ),
                   const Expanded(child: SizedBox()),

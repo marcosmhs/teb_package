@@ -33,8 +33,9 @@ class TebScaffold extends StatelessWidget {
   final bool responsive;
   final int minWebViewWidth;
   final double? fixedWidth;
-  final double? widthPercentage;
+  final double widthPercentage;
   final bool useCenter;
+  final double? maxWidth;
 
   const TebScaffold({
     super.key,
@@ -53,8 +54,9 @@ class TebScaffold extends StatelessWidget {
     this.responsive = false,
     this.minWebViewWidth = 600,
     this.fixedWidth,
-    this.widthPercentage,
+    this.widthPercentage = 0.98,
     this.useCenter = true,
+    this.maxWidth,
   });
 
   @override
@@ -75,11 +77,14 @@ class TebScaffold extends StatelessWidget {
       }
     }
 
-    var bodyWidget = useCenter
-        ? Center(
-            child: SizedBox(width: width, child: body),
-          )
-        : SizedBox(width: width, child: body);
+    Widget bodyWidget = SizedBox(width: width, child: body);
+
+    if (maxWidth != null) {
+      bodyWidget = Container(
+        constraints: BoxConstraints(maxWidth: maxWidth!),
+        child: bodyWidget,
+      );
+    }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -89,7 +94,7 @@ class TebScaffold extends StatelessWidget {
       drawer: showAppDrawer ? drawer : null,
       floatingActionButtonLocation: floatingActionButtonLocation,
       floatingActionButton: floatingActionButton,
-      body: bodyWidget,
+      body: Align(alignment: Alignment.topCenter, child: bodyWidget),
     );
   }
 }

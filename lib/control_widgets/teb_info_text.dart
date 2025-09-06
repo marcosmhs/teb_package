@@ -30,7 +30,7 @@ class TebInfoText extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 2),
-            Expanded(child: TebText(text, textType: textType, textSize: 14)),
+            Expanded(child: TebText(text, textType: textType, fontSize: 14)),
           ],
         ),
       ),

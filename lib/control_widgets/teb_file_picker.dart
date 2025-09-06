@@ -2,13 +2,12 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dio/dio.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // ignore: depend_on_referenced_packages
 import 'package:http_parser/http_parser.dart';
 
 class TebFilePickerWeb extends StatefulWidget {
   final String buttonLabel;
-  final FaIcon? icon;
+  final Icon? icon;
   final void Function(String status)? getStatus;
   final FileType fileType;
   final List<String>? allowedExtensions;
@@ -37,12 +36,9 @@ class _TebFilePickerWebState extends State<TebFilePickerWeb> {
         file,
         filename: fileName,
         contentType: MediaType("image", "png"),
-      )
+      ),
     });
-    var response = await Dio().post(
-      "https://v2.convertapi.com/upload",
-      data: formData,
-    );
+    var response = await Dio().post("https://v2.convertapi.com/upload", data: formData);
     return response.data['FileId'];
   }
 
@@ -55,8 +51,7 @@ class _TebFilePickerWebState extends State<TebFilePickerWeb> {
           if (widget.getStatus != null) widget.getStatus!(status.toString());
         },
         allowedExtensions: widget.allowedExtensions,
-      ))
-          ?.files;
+      ))?.files;
     } on PlatformException catch (e) {
       //setState(() => _status = e.toString());
       if (widget.getStatus != null) widget.getStatus!(e.toString());
@@ -78,7 +73,11 @@ class _TebFilePickerWebState extends State<TebFilePickerWeb> {
   @override
   Widget build(BuildContext context) {
     if (widget.icon != null) {
-      return ElevatedButton.icon(onPressed: () => pickFiles(), icon: widget.icon!, label: Text(widget.buttonLabel));
+      return ElevatedButton.icon(
+        onPressed: () => pickFiles(),
+        icon: widget.icon!,
+        label: Text(widget.buttonLabel),
+      );
     } else {
       return ElevatedButton(onPressed: () => pickFiles(), child: Text(widget.buttonLabel));
     }

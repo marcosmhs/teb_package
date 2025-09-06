@@ -88,7 +88,7 @@ class TebMaterialColorPicker {
                                 children: [
                                   TebText(
                                     TebUtil.colorToHex(selectedShading),
-                                    textSize: 12,
+                                    fontSize: 12,
                                   ),
                                 ],
                               ),
@@ -120,8 +120,8 @@ class TebMaterialColorPicker {
             Widget header = const TebText(
               'Selecione uma cor',
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-              textWeight: FontWeight.bold,
-              textSize: 20,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             );
 
             Widget bottonOptions = SizedBox(
@@ -136,7 +136,7 @@ class TebMaterialColorPicker {
                       children: [
                         const TebText(
                           'Atual',
-                          textSize: 10,
+                          fontSize: 10,
                           padding: EdgeInsets.only(bottom: 3),
                         ),
                         Container(
@@ -155,7 +155,7 @@ class TebMaterialColorPicker {
                       children: [
                         const TebText(
                           'Nova',
-                          textSize: 10,
+                          fontSize: 10,
                           padding: EdgeInsets.only(bottom: 3),
                         ),
                         Container(
@@ -192,7 +192,7 @@ class TebMaterialColorPicker {
                         children: [
                           const TebText(
                             'Cust',
-                            textSize: 10,
+                            fontSize: 10,
                             padding: EdgeInsets.only(bottom: 3),
                           ),
                           Container(

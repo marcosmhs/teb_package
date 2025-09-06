@@ -60,14 +60,13 @@ class TebButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget buttonChild = child ?? TebText(label ?? '', style: textStyle);
+    final Widget buttonChild =
+        child ?? TebText(label ?? '', fontColor: foregroundColor, style: textStyle);
 
     final ButtonStyle finalStyle = ButtonStyle(
       fixedSize: size != null ? WidgetStateProperty.all(size) : null,
       backgroundColor: backgroundColor != null
-          ? WidgetStateProperty.resolveWith<Color?>((states) {
-              return backgroundColor;
-            })
+          ? WidgetStateProperty.resolveWith<Color?>((states) => backgroundColor)
           : null,
 
       foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
