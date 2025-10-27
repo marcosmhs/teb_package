@@ -7,9 +7,14 @@ class TebReturn {
   final TebReturnType returnType;
   final String message;
   final String returnCode;
-  final Object? object;
+  final Object? arguments;
 
-  TebReturn({required this.returnType, required this.message, this.returnCode = '0', this.object});
+  TebReturn({
+    required this.returnType,
+    required this.message,
+    this.returnCode = '0',
+    this.arguments,
+  });
 
   static TebReturn get unauthorizedError {
     return TebReturn(
@@ -19,8 +24,23 @@ class TebReturn {
     );
   }
 
-  static TebReturn error(String message) {
-    return TebReturn(returnType: TebReturnType.error, message: message);
+  Map<String, Object?> get argumentsAsMap {
+    return arguments as Map<String, Object?>;
+  }
+
+  bool get isSucess => returnType == TebReturnType.sucess;
+  bool get isError => returnType == TebReturnType.error;
+
+  static TebReturn get sucess {
+    return TebReturn(returnType: TebReturnType.sucess, message: 'Sucesso');
+  }
+
+  static TebReturn sucessWithArguments(Object arguments) {
+    return TebReturn(returnType: TebReturnType.sucess, message: 'Sucesso', arguments: arguments);
+  }
+
+  static TebReturn error(String message, {Object? arguments}) {
+    return TebReturn(returnType: TebReturnType.error, message: message, arguments: arguments);
   }
 
   static TebReturn get offline {
@@ -83,9 +103,5 @@ class TebReturn {
     } else {
       return TebReturn(returnType: TebReturnType.error, message: authErrors[error] ?? '');
     }
-  }
-
-  static TebReturn get sucess {
-    return TebReturn(returnType: TebReturnType.sucess, message: 'Sucesso');
   }
 }

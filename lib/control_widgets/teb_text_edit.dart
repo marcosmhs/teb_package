@@ -54,6 +54,8 @@ class TebTextEdit extends StatefulWidget {
   final Color? fillColor;
   final String? Function(String? value)? validator;
   final String stringValueValidatorMessage;
+  final String intValueValidatorMessage;
+  final String doubleValueValidatorMessage;
   final void Function(String? value)? onSave;
   final void Function(String? value)? onChanged;
   final void Function()? onEditingCompleted;
@@ -96,6 +98,8 @@ class TebTextEdit extends StatefulWidget {
     this.prefixIconColor,
     this.validator,
     this.stringValueValidatorMessage = '',
+    this.intValueValidatorMessage = '',
+    this.doubleValueValidatorMessage = '',
     this.onSave,
     this.onChanged,
     this.onEditingCompleted,
@@ -126,6 +130,22 @@ class _TebTextEditState extends State<TebTextEdit> {
     if (finalValue.isEmpty) {
       return errorMessage;
     }
+    return null;
+  }
+
+  String? _intValueValidator(int? value, String errorMessage) {
+    if (!widget.enabled) return null;
+    if (value == null) return errorMessage;
+    if (value == 0) return errorMessage;
+
+    return null;
+  }
+
+  String? _doubleValueValidator(double? value, String errorMessage) {
+    if (!widget.enabled) return null;
+    if (value == null) return errorMessage;
+    if (value == 0) return errorMessage;
+
     return null;
   }
 
@@ -180,9 +200,17 @@ class _TebTextEditState extends State<TebTextEdit> {
                     ? null
                     : (_) => FocusScope.of(context).requestFocus(widget.nextFocusNode)),
             focusNode: widget.focusNode,
-            validator: widget.stringValueValidatorMessage.isEmpty
-                ? widget.validator
-                : (value) => _stringValueValidator(value, widget.stringValueValidatorMessage),
+            validator: widget.stringValueValidatorMessage.isNotEmpty
+                ? (value) => _stringValueValidator(value, widget.stringValueValidatorMessage)
+                : widget.intValueValidatorMessage.isNotEmpty
+                ? (value) =>
+                      _intValueValidator(int.tryParse(value ?? ''), widget.intValueValidatorMessage)
+                : widget.doubleValueValidatorMessage.isNotEmpty
+                ? (value) => _doubleValueValidator(
+                    double.tryParse(value ?? ''),
+                    widget.doubleValueValidatorMessage,
+                  )
+                : widget.validator,
             controller: widget.controller,
             maxLines: widget.maxLines,
             maxLength: widget.maxLength,

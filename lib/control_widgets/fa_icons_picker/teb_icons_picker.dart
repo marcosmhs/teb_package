@@ -3,7 +3,7 @@ import 'package:teb_package/control_widgets/fa_icons_picker/teb_icons_list.dart'
 import 'package:teb_package/teb_package.dart';
 
 class TebIconPicker {
-  static Future<IconData?> showFaIconPickerDialog({
+  static Future<IconData?> showIconPickerDialog({
     required BuildContext context,
     required Color backgroundColor,
     required Color specialColor,
@@ -24,8 +24,8 @@ class TebIconPicker {
               backgroundColor: backgroundColor,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               child: Container(
-                width: size.width * 0.5,
-                height: size.height * 0.6,
+                constraints: BoxConstraints(maxWidth: 768),
+                height: size.height * 0.8,
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   children: [
@@ -71,13 +71,14 @@ class TebIconPicker {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(icon.iconData, color: iconColor, size: 32),
-                                  const SizedBox(height: 4),
-                                  TebText(
-                                    icon.title,
-                                    style: const TextStyle(fontSize: 10),
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  if (showIconName) const SizedBox(height: 4),
+                                  if (showIconName)
+                                    TebText(
+                                      icon.title,
+                                      style: const TextStyle(fontSize: 10),
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
                                 ],
                               ),
                             );

@@ -33,7 +33,7 @@ class TebScaffold extends StatelessWidget {
   final bool responsive;
   final int minWebViewWidth;
   final double? fixedWidth;
-  final double widthPercentage;
+  final double? widthPercentage;
   final bool useCenter;
   final double? maxWidth;
 

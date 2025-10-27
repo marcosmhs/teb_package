@@ -36,6 +36,7 @@ class TebButton extends StatelessWidget {
   final bool enabled;
   final TebButtonType buttonType;
   final TextStyle? textStyle;
+  final ButtonStyle? buttonStyle;
   final Widget? icon;
   final Widget? child;
   final EdgeInsetsGeometry? padding;
@@ -50,6 +51,7 @@ class TebButton extends StatelessWidget {
     this.enabled = true,
     this.buttonType = TebButtonType.elevatedButton,
     this.textStyle,
+    this.buttonStyle,
     this.icon,
     this.child,
     this.padding,
@@ -63,19 +65,24 @@ class TebButton extends StatelessWidget {
     final Widget buttonChild =
         child ?? TebText(label ?? '', fontColor: foregroundColor, style: textStyle);
 
-    final ButtonStyle finalStyle = ButtonStyle(
-      fixedSize: size != null ? WidgetStateProperty.all(size) : null,
-      backgroundColor: backgroundColor != null
-          ? WidgetStateProperty.resolveWith<Color?>((states) => backgroundColor)
-          : null,
+    final ButtonStyle finalStyle;
+    if (buttonStyle != null) {
+      finalStyle = buttonStyle!;
+    } else {
+      finalStyle = ButtonStyle(
+        fixedSize: size != null ? WidgetStateProperty.all(size) : null,
+        backgroundColor: backgroundColor != null
+            ? WidgetStateProperty.resolveWith<Color?>((states) => backgroundColor)
+            : null,
 
-      foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
-        if (states.contains(WidgetState.disabled)) {
-          return foregroundColor ?? Theme.of(context).disabledColor;
-        }
-        return foregroundColor;
-      }),
-    );
+        foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+          if (states.contains(WidgetState.disabled)) {
+            return foregroundColor ?? Theme.of(context).disabledColor;
+          }
+          return foregroundColor;
+        }),
+      );
+    }
 
     if (buttonType == TebButtonType.outlinedButton) {
       return icon != null

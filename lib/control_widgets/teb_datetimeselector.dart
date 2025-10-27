@@ -82,13 +82,25 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TebText(widget.displayName ?? 'Data', fontWeight: FontWeight.bold, fontSize: widget.textSize),
-                      if (selectedDate != null)
-                        TebText(DateFormat('dd/MM/yyyy').format(selectedDate!), fontSize: widget.textSize),
+                      TebText(
+                        widget.displayName ?? 'Data',
+                        fontWeight: FontWeight.bold,
+                        fontSize: widget.textSize,
+                        fontColor: widget.enabled ? null : Theme.of(context).disabledColor,
+                      ),
+                      if (selectedDate != null && widget.enabled)
+                        TebText(
+                          DateFormat('dd/MM/yyyy').format(selectedDate!),
+                          fontSize: widget.textSize,
+                        ),
                     ],
                   ),
                   const Expanded(child: SizedBox()),
-                  if (widget.enabled) ElevatedButton(onPressed: _selectDate, child: Text(widget.buttonText ?? 'Selecionar')),
+                  if (widget.enabled)
+                    ElevatedButton(
+                      onPressed: _selectDate,
+                      child: Text(widget.buttonText ?? 'Selecionar'),
+                    ),
                 ],
               ),
               if (widget.errorMessage != '')
@@ -98,9 +110,9 @@ class _TebDateTimeSelectorState extends State<TebDateTimeSelector> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TebText(
                       widget.errorMessage!,
-                      style: Theme.of(
-                        widget.ctx,
-                      ).textTheme.bodySmall!.merge(TextStyle(color: Theme.of(widget.ctx).colorScheme.error)),
+                      style: Theme.of(widget.ctx).textTheme.bodySmall!.merge(
+                        TextStyle(color: Theme.of(widget.ctx).colorScheme.error),
+                      ),
                     ),
                   ),
                 ),

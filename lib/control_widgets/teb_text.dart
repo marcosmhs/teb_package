@@ -100,23 +100,22 @@ class TebText extends StatelessWidget {
       coreTextWidget = Text(text, textAlign: textAlign, maxLines: maxLines, style: finalTextStyle);
     } else {
       var htmlText = text;
-      if ((fontWeight ?? textWeight) != null) {
-        if ((fontWeight ?? textWeight)!.value >= 700) {
-          htmlText = '<b>$htmlText</b>';
-        }
-      }
-
-      if ((fontColor ?? textColor) != null) {
-        htmlText =
-            "<span style='color: ${TebUtil.colorToHex(fontColor ?? textColor!)}'>$htmlText</span>";
-      }
-
-      htmlText = "<span style='font-size: ${fontSize ?? textSize ?? 12}px'>$htmlText</span>";
-
-      if (textAlign == TextAlign.center) {
-        htmlText = "<div style='text-align: center'>$htmlText</div>";
-      }
-      coreTextWidget = Html(data: htmlText);
+      coreTextWidget = Html(
+        // shrinkWrap avoid errors when is inside a Row()
+        shrinkWrap: true,
+        // remove default padding
+        style: {
+          "body": Style(
+            padding: HtmlPaddings.zero,
+            margin: Margins.zero,
+            textAlign: textAlign,
+            color: fontColor ?? textColor,
+            fontSize: FontSize(fontSize ?? textSize ?? 12),
+            fontWeight: fontWeight ?? textWeight,
+          ),
+        },
+        data: htmlText,
+      );
     }
 
     Widget finalWidget = coreTextWidget;
