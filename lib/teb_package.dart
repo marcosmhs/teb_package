@@ -22,6 +22,7 @@ export 'control_widgets/teb_silverappbar.dart';
 export 'control_widgets/teb_switch.dart';
 export 'control_widgets/teb_text.dart';
 export 'control_widgets/teb_text_edit.dart';
+export 'control_widgets/teb_author_credit.dart';
 
 export 'control_widgets/month_picker/teb_month_container.dart';
 export 'control_widgets/month_picker/teb_month_dialog.dart';
