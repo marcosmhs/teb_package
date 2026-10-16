@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
-import 'package:teb_package/visual_elements/month_picker/teb_month_container.dart';
-import 'package:teb_package/visual_elements/month_picker/teb_month_dialog.dart';
+import 'package:teb_package/control_widgets/month_picker/teb_month_container.dart';
+import 'package:teb_package/control_widgets/month_picker/teb_month_dialog.dart';
 
 class MonthStructure {
   int index;

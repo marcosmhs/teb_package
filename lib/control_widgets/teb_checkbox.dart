@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teb_package/control_widgets/teb_text.dart';
 
 enum DisplayMode { dialog, modal }
 
@@ -8,6 +9,8 @@ class TebCheckBox extends StatefulWidget {
   final String subTitle;
   final bool? value;
   final bool enabled;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subtitleTextStyle;
   final void Function(bool?)? onChanged;
 
   const TebCheckBox({
@@ -15,7 +18,9 @@ class TebCheckBox extends StatefulWidget {
     required this.context,
     required this.value,
     required this.title,
+    this.titleTextStyle,
     this.subTitle = '',
+    this.subtitleTextStyle,
     required this.onChanged,
     this.enabled = true,
   });
@@ -28,12 +33,13 @@ class _TebCheckBoxState extends State<TebCheckBox> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      
-      title: Text(widget.title),
+      title: TebText(widget.title, style: widget.titleTextStyle),
       value: widget.value,
       onChanged: widget.onChanged,
       enabled: widget.enabled,
-      subtitle: widget.subTitle.isEmpty ? null : Text(widget.subTitle),
+      subtitle: widget.subTitle.isEmpty
+          ? null
+          : TebText(widget.subTitle, style: widget.subtitleTextStyle),
     );
   }
 }

@@ -6,18 +6,11 @@ import 'package:flutter/material.dart' as flutter;
 
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:teb_package/util/map.dart';
 
-enum TextWidth { tw2, tw4, tw6, tw8, tw10, tw12, tw14, tw16, tw18, tw20 }
+enum FontWidth { tw2, tw4, tw6, tw8, tw10, tw12, tw14, tw16, tw18, tw20 }
 
 class TebUtil {
-  static DateTime firstDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month, 1);
-  }
-
-  static DateTime lastDayOfMonth(DateTime date) {
-    return DateTime(date.year, date.month + 1, 0);
-  }
-
   static String colorToHex(flutter.Color color) {
     if (color.toARGB32() == 0) return '';
     return '#FF${color.toARGB32().toRadixString(16).substring(2, 8)}'.toUpperCase();
@@ -35,39 +28,8 @@ class TebUtil {
     return flutter.Color(int.parse(hexValue, radix: 16));
   }
 
-  static int countSundays(DateTime start, DateTime end) {
-    int count = 0;
-    DateTime currentDate = start;
-
-    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
-      if (currentDate.weekday == DateTime.sunday) {
-        count++;
-      }
-      currentDate = currentDate.add(const Duration(days: 1));
-    }
-
-    return count;
-  }
-
-  static List<DateTime> getSundayList(DateTime start, DateTime end) {
-    DateTime currentDate = start;
-
-    List<DateTime> sundayCount = [];
-
-    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
-      if (currentDate.weekday == DateTime.sunday) sundayCount.add(currentDate);
-      currentDate = currentDate.add(const Duration(days: 1));
-    }
-
-    return sundayCount;
-  }
-
   static void restartApplication() {
     Restart.restartApp();
-  }
-
-  static String dateTimeFormat({required DateTime date, String mask = 'dd/MM/yyyy'}) {
-    return DateFormat(mask).format(date);
   }
 
   static String formatedCurrencyValue({required double value, bool showSignal = false}) {
@@ -128,21 +90,34 @@ class TebUtil {
     return decrypted;
   }
 
-  static double textWidthCalculation(TextWidth textWidth) {
+  static double fontWidthCalculation(FontWidth fontWidth) {
     double result = 0;
-    result = switch (textWidth) {
-      TextWidth.tw2 => 100,
-      TextWidth.tw4 => 150,
-      TextWidth.tw6 => 200,
-      TextWidth.tw8 => 250,
-      TextWidth.tw10 => 300,
-      TextWidth.tw12 => 350,
-      TextWidth.tw14 => 400,
-      TextWidth.tw16 => 450,
-      TextWidth.tw18 => 500,
-      TextWidth.tw20 => 600,
+    result = switch (fontWidth) {
+      FontWidth.tw2 => 100,
+      FontWidth.tw4 => 150,
+      FontWidth.tw6 => 200,
+      FontWidth.tw8 => 250,
+      FontWidth.tw10 => 300,
+      FontWidth.tw12 => 350,
+      FontWidth.tw14 => 400,
+      FontWidth.tw16 => 450,
+      FontWidth.tw18 => 500,
+      FontWidth.tw20 => 600,
     };
     return result;
+  }
+
+  static String removeDiacritics(String text) =>
+      String.fromCharCodes(replaceCodeUnits(text.codeUnits));
+
+  // DateTime functions
+
+  static DateTime getOnlyDate(DateTime dateTime) {
+    return DateTime(dateTime.year, dateTime.month, dateTime.day);
+  }
+
+  static String dateTimeFormat({required DateTime date, String mask = 'dd/MM/yyyy'}) {
+    return DateFormat(mask).format(date);
   }
 
   static bool isDateEqual(DateTime? a, DateTime? b) {
@@ -151,5 +126,40 @@ class TebUtil {
     }
 
     return a.year == b.year && a.month == b.month && a.day == b.day;
+  }
+
+  static int countSundays(DateTime start, DateTime end) {
+    int count = 0;
+    DateTime currentDate = start;
+
+    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
+      if (currentDate.weekday == DateTime.sunday) {
+        count++;
+      }
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+
+    return count;
+  }
+
+  static List<DateTime> getSundayList(DateTime start, DateTime end) {
+    DateTime currentDate = start;
+
+    List<DateTime> sundayCount = [];
+
+    while (currentDate.isBefore(end) || currentDate.isAtSameMomentAs(end)) {
+      if (currentDate.weekday == DateTime.sunday) sundayCount.add(currentDate);
+      currentDate = currentDate.add(const Duration(days: 1));
+    }
+
+    return sundayCount;
+  }
+
+  static DateTime firstDayOfMonth(DateTime date) {
+    return DateTime(date.year, date.month, 1);
+  }
+
+  static DateTime lastDayOfMonth(DateTime date) {
+    return DateTime(date.year, date.month + 1, 0);
   }
 }

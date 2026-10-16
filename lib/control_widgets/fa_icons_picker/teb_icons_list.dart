@@ -27,7 +27,7 @@ class FaIconData implements Comparable {
 }
 
 final faIconDataList = <FaIconData>[
-  FaIconData(FontAwesomeIcons.zero, 'zero'),
+FaIconData(FontAwesomeIcons.zero, 'zero'),
   FaIconData(FontAwesomeIcons.one, 'one'),
   FaIconData(FontAwesomeIcons.two, 'two'),
   FaIconData(FontAwesomeIcons.three, 'three'),
@@ -61,7 +61,8 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.amilia, 'amilia'),
   FaIconData(FontAwesomeIcons.anchor, 'anchor'),
   FaIconData(FontAwesomeIcons.anchorCircleCheck, 'anchorCircleCheck'),
-  FaIconData(FontAwesomeIcons.anchorCircleExclamation, 'anchorCircleExclamation'),
+  FaIconData(
+      FontAwesomeIcons.anchorCircleExclamation, 'anchorCircleExclamation'),
   FaIconData(FontAwesomeIcons.anchorCircleXmark, 'anchorCircleXmark'),
   FaIconData(FontAwesomeIcons.anchorLock, 'anchorLock'),
   FaIconData(FontAwesomeIcons.android, 'android'),
@@ -114,11 +115,13 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.arrowUp91, 'arrowUp91'),
   FaIconData(FontAwesomeIcons.arrowUpAZ, 'arrowUpAZ'),
   FaIconData(FontAwesomeIcons.arrowUpFromBracket, 'arrowUpFromBracket'),
-  FaIconData(FontAwesomeIcons.arrowUpFromGroundWater, 'arrowUpFromGroundWater'),
+  FaIconData(
+      FontAwesomeIcons.arrowUpFromGroundWater, 'arrowUpFromGroundWater'),
   FaIconData(FontAwesomeIcons.arrowUpFromWaterPump, 'arrowUpFromWaterPump'),
   FaIconData(FontAwesomeIcons.arrowUpLong, 'arrowUpLong'),
   FaIconData(FontAwesomeIcons.arrowUpRightDots, 'arrowUpRightDots'),
-  FaIconData(FontAwesomeIcons.arrowUpRightFromSquare, 'arrowUpRightFromSquare'),
+  FaIconData(
+      FontAwesomeIcons.arrowUpRightFromSquare, 'arrowUpRightFromSquare'),
   FaIconData(FontAwesomeIcons.arrowUpShortWide, 'arrowUpShortWide'),
   FaIconData(FontAwesomeIcons.arrowUpWideShort, 'arrowUpWideShort'),
   FaIconData(FontAwesomeIcons.arrowUpZA, 'arrowUpZA'),
@@ -249,6 +252,8 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.boxesStacked, 'boxesStacked'),
   FaIconData(FontAwesomeIcons.braille, 'braille'),
   FaIconData(FontAwesomeIcons.brain, 'brain'),
+  FaIconData(FontAwesomeIcons.brave, 'brave'),
+  FaIconData(FontAwesomeIcons.braveReverse, 'braveReverse'),
   FaIconData(FontAwesomeIcons.brazilianRealSign, 'brazilianRealSign'),
   FaIconData(FontAwesomeIcons.breadSlice, 'breadSlice'),
   FaIconData(FontAwesomeIcons.bridge, 'bridge'),
@@ -291,6 +296,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.buromobelexperte, 'buromobelexperte'),
   FaIconData(FontAwesomeIcons.burst, 'burst'),
   FaIconData(FontAwesomeIcons.bus, 'bus'),
+  
   FaIconData(FontAwesomeIcons.busSimple, 'busSimple'),
   FaIconData(FontAwesomeIcons.businessTime, 'businessTime'),
   FaIconData(FontAwesomeIcons.buyNLarge, 'buyNLarge'),
@@ -313,6 +319,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.calendarWeek, 'calendarWeek'),
   FaIconData(FontAwesomeIcons.solidCalendarXmark, 'solidCalendarXmark'),
   FaIconData(FontAwesomeIcons.calendarXmark, 'calendarXmark'),
+  
   FaIconData(FontAwesomeIcons.camera, 'camera'),
   FaIconData(FontAwesomeIcons.cameraRetro, 'cameraRetro'),
   FaIconData(FontAwesomeIcons.cameraRotate, 'cameraRotate'),
@@ -339,6 +346,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.cartFlatbedSuitcase, 'cartFlatbedSuitcase'),
   FaIconData(FontAwesomeIcons.cartPlus, 'cartPlus'),
   FaIconData(FontAwesomeIcons.cartShopping, 'cartShopping'),
+  
   FaIconData(FontAwesomeIcons.cashRegister, 'cashRegister'),
   FaIconData(FontAwesomeIcons.cat, 'cat'),
   FaIconData(FontAwesomeIcons.ccAmazonPay, 'ccAmazonPay'),
@@ -365,6 +373,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidChartBar, 'solidChartBar'),
   FaIconData(FontAwesomeIcons.chartBar, 'chartBar'),
   FaIconData(FontAwesomeIcons.chartColumn, 'chartColumn'),
+  
   FaIconData(FontAwesomeIcons.chartGantt, 'chartGantt'),
   FaIconData(FontAwesomeIcons.chartLine, 'chartLine'),
   FaIconData(FontAwesomeIcons.chartPie, 'chartPie'),
@@ -458,6 +467,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.clone, 'clone'),
   FaIconData(FontAwesomeIcons.solidClosedCaptioning, 'solidClosedCaptioning'),
   FaIconData(FontAwesomeIcons.closedCaptioning, 'closedCaptioning'),
+  
   FaIconData(FontAwesomeIcons.cloud, 'cloud'),
   FaIconData(FontAwesomeIcons.cloudArrowDown, 'cloudArrowDown'),
   FaIconData(FontAwesomeIcons.cloudArrowUp, 'cloudArrowUp'),
@@ -493,6 +503,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidCommentDots, 'solidCommentDots'),
   FaIconData(FontAwesomeIcons.commentDots, 'commentDots'),
   FaIconData(FontAwesomeIcons.commentMedical, 'commentMedical'),
+  
   FaIconData(FontAwesomeIcons.commentSlash, 'commentSlash'),
   FaIconData(FontAwesomeIcons.commentSms, 'commentSms'),
   FaIconData(FontAwesomeIcons.solidComments, 'solidComments'),
@@ -545,6 +556,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.crown, 'crown'),
   FaIconData(FontAwesomeIcons.crutch, 'crutch'),
   FaIconData(FontAwesomeIcons.cruzeiroSign, 'cruzeiroSign'),
+  
   FaIconData(FontAwesomeIcons.css3, 'css3'),
   FaIconData(FontAwesomeIcons.css3Alt, 'css3Alt'),
   FaIconData(FontAwesomeIcons.cube, 'cube'),
@@ -555,8 +567,10 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.dAndD, 'dAndD'),
   FaIconData(FontAwesomeIcons.dAndDBeyond, 'dAndDBeyond'),
   FaIconData(FontAwesomeIcons.dailymotion, 'dailymotion'),
+  
   FaIconData(FontAwesomeIcons.dashcube, 'dashcube'),
   FaIconData(FontAwesomeIcons.database, 'database'),
+  FaIconData(FontAwesomeIcons.debian, 'debian'),
   FaIconData(FontAwesomeIcons.deezer, 'deezer'),
   FaIconData(FontAwesomeIcons.deleteLeft, 'deleteLeft'),
   FaIconData(FontAwesomeIcons.delicious, 'delicious'),
@@ -590,6 +604,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.discourse, 'discourse'),
   FaIconData(FontAwesomeIcons.disease, 'disease'),
   FaIconData(FontAwesomeIcons.display, 'display'),
+  
   FaIconData(FontAwesomeIcons.divide, 'divide'),
   FaIconData(FontAwesomeIcons.dna, 'dna'),
   FaIconData(FontAwesomeIcons.dochub, 'dochub'),
@@ -620,6 +635,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.dumpster, 'dumpster'),
   FaIconData(FontAwesomeIcons.dumpsterFire, 'dumpsterFire'),
   FaIconData(FontAwesomeIcons.dungeon, 'dungeon'),
+  
   FaIconData(FontAwesomeIcons.dyalog, 'dyalog'),
   FaIconData(FontAwesomeIcons.e, 'e'),
   FaIconData(FontAwesomeIcons.earDeaf, 'earDeaf'),
@@ -637,6 +653,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.eject, 'eject'),
   FaIconData(FontAwesomeIcons.elementor, 'elementor'),
   FaIconData(FontAwesomeIcons.elevator, 'elevator'),
+  
   FaIconData(FontAwesomeIcons.ellipsis, 'ellipsis'),
   FaIconData(FontAwesomeIcons.ellipsisVertical, 'ellipsisVertical'),
   FaIconData(FontAwesomeIcons.ello, 'ello'),
@@ -779,6 +796,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidFileExcel, 'solidFileExcel'),
   FaIconData(FontAwesomeIcons.fileExcel, 'fileExcel'),
   FaIconData(FontAwesomeIcons.fileExport, 'fileExport'),
+
   FaIconData(FontAwesomeIcons.solidFileImage, 'solidFileImage'),
   FaIconData(FontAwesomeIcons.fileImage, 'fileImage'),
   FaIconData(FontAwesomeIcons.fileImport, 'fileImport'),
@@ -802,7 +820,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.fileWord, 'fileWord'),
   FaIconData(FontAwesomeIcons.solidFileZipper, 'solidFileZipper'),
   FaIconData(FontAwesomeIcons.fileZipper, 'fileZipper'),
-  FaIconData(FontAwesomeIcons.fill, 'fill'),
+    FaIconData(FontAwesomeIcons.fill, 'fill'),
   FaIconData(FontAwesomeIcons.fillDrip, 'fillDrip'),
   FaIconData(FontAwesomeIcons.film, 'film'),
   FaIconData(FontAwesomeIcons.filter, 'filter'),
@@ -832,7 +850,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidFloppyDisk, 'solidFloppyDisk'),
   FaIconData(FontAwesomeIcons.floppyDisk, 'floppyDisk'),
   FaIconData(FontAwesomeIcons.florinSign, 'florinSign'),
-  FaIconData(FontAwesomeIcons.fly, 'fly'),
+    FaIconData(FontAwesomeIcons.fly, 'fly'),
   FaIconData(FontAwesomeIcons.solidFolder, 'solidFolder'),
   FaIconData(FontAwesomeIcons.folder, 'folder'),
   FaIconData(FontAwesomeIcons.solidFolderClosed, 'solidFolderClosed'),
@@ -908,6 +926,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.googlePlay, 'googlePlay'),
   FaIconData(FontAwesomeIcons.googlePlus, 'googlePlus'),
   FaIconData(FontAwesomeIcons.googlePlusG, 'googlePlusG'),
+  FaIconData(FontAwesomeIcons.googleScholar, 'googleScholar'),
   FaIconData(FontAwesomeIcons.googleWallet, 'googleWallet'),
   FaIconData(FontAwesomeIcons.gopuram, 'gopuram'),
   FaIconData(FontAwesomeIcons.graduationCap, 'graduationCap'),
@@ -977,8 +996,6 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidHandshake, 'solidHandshake'),
   FaIconData(FontAwesomeIcons.handshake, 'handshake'),
   FaIconData(FontAwesomeIcons.handshakeAngle, 'handshakeAngle'),
-  FaIconData(FontAwesomeIcons.handshakeSimple, 'handshakeSimple'),
-  FaIconData(FontAwesomeIcons.handshakeSimpleSlash, 'handshakeSimpleSlash'),
   FaIconData(FontAwesomeIcons.handshakeSlash, 'handshakeSlash'),
   FaIconData(FontAwesomeIcons.hanukiah, 'hanukiah'),
   FaIconData(FontAwesomeIcons.solidHardDrive, 'solidHardDrive'),
@@ -993,8 +1010,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.headSideMask, 'headSideMask'),
   FaIconData(FontAwesomeIcons.headSideVirus, 'headSideVirus'),
   FaIconData(FontAwesomeIcons.heading, 'heading'),
-  FaIconData(FontAwesomeIcons.headphones, 'headphones'),
-  FaIconData(FontAwesomeIcons.headphonesSimple, 'headphonesSimple'),
+    FaIconData(FontAwesomeIcons.headphones, 'headphones'),
   FaIconData(FontAwesomeIcons.headset, 'headset'),
   FaIconData(FontAwesomeIcons.solidHeart, 'solidHeart'),
   FaIconData(FontAwesomeIcons.heart, 'heart'),
@@ -1011,6 +1027,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.helicopterSymbol, 'helicopterSymbol'),
   FaIconData(FontAwesomeIcons.helmetSafety, 'helmetSafety'),
   FaIconData(FontAwesomeIcons.helmetUn, 'helmetUn'),
+  
   FaIconData(FontAwesomeIcons.highlighter, 'highlighter'),
   FaIconData(FontAwesomeIcons.hillAvalanche, 'hillAvalanche'),
   FaIconData(FontAwesomeIcons.hillRockslide, 'hillRockslide'),
@@ -1037,6 +1054,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidHourglassHalf, 'solidHourglassHalf'),
   FaIconData(FontAwesomeIcons.hourglassHalf, 'hourglassHalf'),
   FaIconData(FontAwesomeIcons.hourglassStart, 'hourglassStart'),
+  
   FaIconData(FontAwesomeIcons.house, 'house'),
   FaIconData(FontAwesomeIcons.houseChimney, 'houseChimney'),
   FaIconData(FontAwesomeIcons.houseChimneyCrack, 'houseChimneyCrack'),
@@ -1121,9 +1139,11 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.js, 'js'),
   FaIconData(FontAwesomeIcons.jsfiddle, 'jsfiddle'),
   FaIconData(FontAwesomeIcons.jugDetergent, 'jugDetergent'),
+  
   FaIconData(FontAwesomeIcons.k, 'k'),
   FaIconData(FontAwesomeIcons.kaaba, 'kaaba'),
   FaIconData(FontAwesomeIcons.kaggle, 'kaggle'),
+  
   FaIconData(FontAwesomeIcons.key, 'key'),
   FaIconData(FontAwesomeIcons.keybase, 'keybase'),
   FaIconData(FontAwesomeIcons.solidKeyboard, 'solidKeyboard'),
@@ -1160,6 +1180,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.less, 'less'),
   FaIconData(FontAwesomeIcons.lessThan, 'lessThan'),
   FaIconData(FontAwesomeIcons.lessThanEqual, 'lessThanEqual'),
+  FaIconData(FontAwesomeIcons.letterboxd, 'letterboxd'),
   FaIconData(FontAwesomeIcons.solidLifeRing, 'solidLifeRing'),
   FaIconData(FontAwesomeIcons.lifeRing, 'lifeRing'),
   FaIconData(FontAwesomeIcons.solidLightbulb, 'solidLightbulb'),
@@ -1170,7 +1191,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.linkSlash, 'linkSlash'),
   FaIconData(FontAwesomeIcons.linkedin, 'linkedin'),
   FaIconData(FontAwesomeIcons.linkedinIn, 'linkedinIn'),
-  FaIconData(FontAwesomeIcons.linode, 'linode'),
+    FaIconData(FontAwesomeIcons.linode, 'linode'),
   FaIconData(FontAwesomeIcons.linux, 'linux'),
   FaIconData(FontAwesomeIcons.liraSign, 'liraSign'),
   FaIconData(FontAwesomeIcons.list, 'list'),
@@ -1186,7 +1207,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.lock, 'lock'),
   FaIconData(FontAwesomeIcons.lockOpen, 'lockOpen'),
   FaIconData(FontAwesomeIcons.locust, 'locust'),
-  FaIconData(FontAwesomeIcons.lungs, 'lungs'),
+    FaIconData(FontAwesomeIcons.lungs, 'lungs'),
   FaIconData(FontAwesomeIcons.lungsVirus, 'lungsVirus'),
   FaIconData(FontAwesomeIcons.lyft, 'lyft'),
   FaIconData(FontAwesomeIcons.m, 'm'),
@@ -1254,6 +1275,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.microsoft, 'microsoft'),
   FaIconData(FontAwesomeIcons.millSign, 'millSign'),
   FaIconData(FontAwesomeIcons.minimize, 'minimize'),
+  FaIconData(FontAwesomeIcons.mintbit, 'mintbit'),
   FaIconData(FontAwesomeIcons.minus, 'minus'),
   FaIconData(FontAwesomeIcons.mitten, 'mitten'),
   FaIconData(FontAwesomeIcons.mix, 'mix'),
@@ -1265,7 +1287,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.mobileRetro, 'mobileRetro'),
   FaIconData(FontAwesomeIcons.mobileScreen, 'mobileScreen'),
   FaIconData(FontAwesomeIcons.mobileScreenButton, 'mobileScreenButton'),
-  FaIconData(FontAwesomeIcons.modx, 'modx'),
+    FaIconData(FontAwesomeIcons.modx, 'modx'),
   FaIconData(FontAwesomeIcons.monero, 'monero'),
   FaIconData(FontAwesomeIcons.moneyBill, 'moneyBill'),
   FaIconData(FontAwesomeIcons.solidMoneyBill1, 'solidMoneyBill1'),
@@ -1306,11 +1328,13 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.nimblr, 'nimblr'),
   FaIconData(FontAwesomeIcons.node, 'node'),
   FaIconData(FontAwesomeIcons.nodeJs, 'nodeJs'),
+  
   FaIconData(FontAwesomeIcons.notEqual, 'notEqual'),
   FaIconData(FontAwesomeIcons.notdef, 'notdef'),
   FaIconData(FontAwesomeIcons.solidNoteSticky, 'solidNoteSticky'),
   FaIconData(FontAwesomeIcons.noteSticky, 'noteSticky'),
   FaIconData(FontAwesomeIcons.notesMedical, 'notesMedical'),
+  
   FaIconData(FontAwesomeIcons.npm, 'npm'),
   FaIconData(FontAwesomeIcons.ns8, 'ns8'),
   FaIconData(FontAwesomeIcons.nutritionix, 'nutritionix'),
@@ -1319,6 +1343,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.objectGroup, 'objectGroup'),
   FaIconData(FontAwesomeIcons.solidObjectUngroup, 'solidObjectUngroup'),
   FaIconData(FontAwesomeIcons.objectUngroup, 'objectUngroup'),
+  
   FaIconData(FontAwesomeIcons.octopusDeploy, 'octopusDeploy'),
   FaIconData(FontAwesomeIcons.odnoklassniki, 'odnoklassniki'),
   FaIconData(FontAwesomeIcons.odysee, 'odysee'),
@@ -1326,8 +1351,10 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.oilWell, 'oilWell'),
   FaIconData(FontAwesomeIcons.oldRepublic, 'oldRepublic'),
   FaIconData(FontAwesomeIcons.om, 'om'),
+  
   FaIconData(FontAwesomeIcons.opencart, 'opencart'),
   FaIconData(FontAwesomeIcons.openid, 'openid'),
+  FaIconData(FontAwesomeIcons.opensuse, 'opensuse'),
   FaIconData(FontAwesomeIcons.opera, 'opera'),
   FaIconData(FontAwesomeIcons.optinMonster, 'optinMonster'),
   FaIconData(FontAwesomeIcons.orcid, 'orcid'),
@@ -1344,6 +1371,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.palette, 'palette'),
   FaIconData(FontAwesomeIcons.palfed, 'palfed'),
   FaIconData(FontAwesomeIcons.pallet, 'pallet'),
+  
   FaIconData(FontAwesomeIcons.panorama, 'panorama'),
   FaIconData(FontAwesomeIcons.solidPaperPlane, 'solidPaperPlane'),
   FaIconData(FontAwesomeIcons.paperPlane, 'paperPlane'),
@@ -1366,6 +1394,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.solidPenToSquare, 'solidPenToSquare'),
   FaIconData(FontAwesomeIcons.penToSquare, 'penToSquare'),
   FaIconData(FontAwesomeIcons.pencil, 'pencil'),
+  
   FaIconData(FontAwesomeIcons.peopleArrows, 'peopleArrows'),
   FaIconData(FontAwesomeIcons.peopleCarryBox, 'peopleCarryBox'),
   FaIconData(FontAwesomeIcons.peopleGroup, 'peopleGroup'),
@@ -1449,6 +1478,8 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.pinterest, 'pinterest'),
   FaIconData(FontAwesomeIcons.pinterestP, 'pinterestP'),
   FaIconData(FontAwesomeIcons.pix, 'pix'),
+  
+  FaIconData(FontAwesomeIcons.pixiv, 'pixiv'),
   FaIconData(FontAwesomeIcons.pizzaSlice, 'pizzaSlice'),
   FaIconData(FontAwesomeIcons.placeOfWorship, 'placeOfWorship'),
   FaIconData(FontAwesomeIcons.plane, 'plane'),
@@ -1600,6 +1631,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.seedling, 'seedling'),
   FaIconData(FontAwesomeIcons.sellcast, 'sellcast'),
   FaIconData(FontAwesomeIcons.sellsy, 'sellsy'),
+  
   FaIconData(FontAwesomeIcons.server, 'server'),
   FaIconData(FontAwesomeIcons.servicestack, 'servicestack'),
   FaIconData(FontAwesomeIcons.shapes, 'shapes'),
@@ -1619,6 +1651,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.shirt, 'shirt'),
   FaIconData(FontAwesomeIcons.shirtsinbulk, 'shirtsinbulk'),
   FaIconData(FontAwesomeIcons.shoePrints, 'shoePrints'),
+  FaIconData(FontAwesomeIcons.shoelace, 'shoelace'),
   FaIconData(FontAwesomeIcons.shop, 'shop'),
   FaIconData(FontAwesomeIcons.shopLock, 'shopLock'),
   FaIconData(FontAwesomeIcons.shopSlash, 'shopSlash'),
@@ -1630,10 +1663,12 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.shuttleSpace, 'shuttleSpace'),
   FaIconData(FontAwesomeIcons.signHanging, 'signHanging'),
   FaIconData(FontAwesomeIcons.signal, 'signal'),
+  FaIconData(FontAwesomeIcons.signalMessenger, 'signalMessenger'),
   FaIconData(FontAwesomeIcons.signature, 'signature'),
   FaIconData(FontAwesomeIcons.signsPost, 'signsPost'),
   FaIconData(FontAwesomeIcons.simCard, 'simCard'),
   FaIconData(FontAwesomeIcons.simplybuilt, 'simplybuilt'),
+  
   FaIconData(FontAwesomeIcons.sink, 'sink'),
   FaIconData(FontAwesomeIcons.sistrix, 'sistrix'),
   FaIconData(FontAwesomeIcons.sitemap, 'sitemap'),
@@ -1673,6 +1708,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.spellCheck, 'spellCheck'),
   FaIconData(FontAwesomeIcons.spider, 'spider'),
   FaIconData(FontAwesomeIcons.spinner, 'spinner'),
+  
   FaIconData(FontAwesomeIcons.splotch, 'splotch'),
   FaIconData(FontAwesomeIcons.spoon, 'spoon'),
   FaIconData(FontAwesomeIcons.spotify, 'spotify'),
@@ -1682,6 +1718,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.square, 'square'),
   FaIconData(FontAwesomeIcons.squareArrowUpRight, 'squareArrowUpRight'),
   FaIconData(FontAwesomeIcons.squareBehance, 'squareBehance'),
+  
   FaIconData(FontAwesomeIcons.solidSquareCaretDown, 'solidSquareCaretDown'),
   FaIconData(FontAwesomeIcons.squareCaretDown, 'squareCaretDown'),
   FaIconData(FontAwesomeIcons.solidSquareCaretLeft, 'solidSquareCaretLeft'),
@@ -1695,6 +1732,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.squareDribbble, 'squareDribbble'),
   FaIconData(FontAwesomeIcons.squareEnvelope, 'squareEnvelope'),
   FaIconData(FontAwesomeIcons.squareFacebook, 'squareFacebook'),
+  
   FaIconData(FontAwesomeIcons.squareFontAwesome, 'squareFontAwesome'),
   FaIconData(
       FontAwesomeIcons.squareFontAwesomeStroke, 'squareFontAwesomeStroke'),
@@ -1709,6 +1747,8 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.squareInstagram, 'squareInstagram'),
   FaIconData(FontAwesomeIcons.squareJs, 'squareJs'),
   FaIconData(FontAwesomeIcons.squareLastfm, 'squareLastfm'),
+  FaIconData(FontAwesomeIcons.squareLetterboxd, 'squareLetterboxd'),
+  
   FaIconData(FontAwesomeIcons.solidSquareMinus, 'solidSquareMinus'),
   FaIconData(FontAwesomeIcons.squareMinus, 'squareMinus'),
   FaIconData(FontAwesomeIcons.squareNfi, 'squareNfi'),
@@ -1730,13 +1770,18 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.squareShareNodes, 'squareShareNodes'),
   FaIconData(FontAwesomeIcons.squareSnapchat, 'squareSnapchat'),
   FaIconData(FontAwesomeIcons.squareSteam, 'squareSteam'),
+  FaIconData(FontAwesomeIcons.squareThreads, 'squareThreads'),
   FaIconData(FontAwesomeIcons.squareTumblr, 'squareTumblr'),
   FaIconData(FontAwesomeIcons.squareTwitter, 'squareTwitter'),
   FaIconData(FontAwesomeIcons.squareUpRight, 'squareUpRight'),
+  
   FaIconData(FontAwesomeIcons.squareViadeo, 'squareViadeo'),
   FaIconData(FontAwesomeIcons.squareVimeo, 'squareVimeo'),
   FaIconData(FontAwesomeIcons.squareVirus, 'squareVirus'),
+  
+  
   FaIconData(FontAwesomeIcons.squareWhatsapp, 'squareWhatsapp'),
+  FaIconData(FontAwesomeIcons.squareXTwitter, 'squareXTwitter'),
   FaIconData(FontAwesomeIcons.squareXing, 'squareXing'),
   FaIconData(FontAwesomeIcons.squareXmark, 'squareXmark'),
   FaIconData(FontAwesomeIcons.squareYoutube, 'squareYoutube'),
@@ -1797,7 +1842,9 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.t, 't'),
   FaIconData(FontAwesomeIcons.table, 'table'),
   FaIconData(FontAwesomeIcons.tableCells, 'tableCells'),
+  
   FaIconData(FontAwesomeIcons.tableCellsLarge, 'tableCellsLarge'),
+  
   FaIconData(FontAwesomeIcons.tableColumns, 'tableColumns'),
   FaIconData(FontAwesomeIcons.tableList, 'tableList'),
   FaIconData(FontAwesomeIcons.tableTennisPaddleBall, 'tableTennisPaddleBall'),
@@ -1835,6 +1882,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.tentArrowsDown, 'tentArrowsDown'),
   FaIconData(FontAwesomeIcons.tents, 'tents'),
   FaIconData(FontAwesomeIcons.terminal, 'terminal'),
+  
   FaIconData(FontAwesomeIcons.textHeight, 'textHeight'),
   FaIconData(FontAwesomeIcons.textSlash, 'textSlash'),
   FaIconData(FontAwesomeIcons.textWidth, 'textWidth'),
@@ -1843,13 +1891,16 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.themeisle, 'themeisle'),
   FaIconData(FontAwesomeIcons.thermometer, 'thermometer'),
   FaIconData(FontAwesomeIcons.thinkPeaks, 'thinkPeaks'),
+  FaIconData(FontAwesomeIcons.threads, 'threads'),
   FaIconData(FontAwesomeIcons.solidThumbsDown, 'solidThumbsDown'),
   FaIconData(FontAwesomeIcons.thumbsDown, 'thumbsDown'),
   FaIconData(FontAwesomeIcons.solidThumbsUp, 'solidThumbsUp'),
   FaIconData(FontAwesomeIcons.thumbsUp, 'thumbsUp'),
   FaIconData(FontAwesomeIcons.thumbtack, 'thumbtack'),
+  
   FaIconData(FontAwesomeIcons.ticket, 'ticket'),
   FaIconData(FontAwesomeIcons.ticketSimple, 'ticketSimple'),
+  
   FaIconData(FontAwesomeIcons.tiktok, 'tiktok'),
   FaIconData(FontAwesomeIcons.timeline, 'timeline'),
   FaIconData(FontAwesomeIcons.toggleOff, 'toggleOff'),
@@ -1887,6 +1938,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.trophy, 'trophy'),
   FaIconData(FontAwesomeIcons.trowel, 'trowel'),
   FaIconData(FontAwesomeIcons.trowelBricks, 'trowelBricks'),
+  
   FaIconData(FontAwesomeIcons.truck, 'truck'),
   FaIconData(FontAwesomeIcons.truckArrowRight, 'truckArrowRight'),
   FaIconData(FontAwesomeIcons.truckDroplet, 'truckDroplet'),
@@ -1933,6 +1985,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.upRightFromSquare, 'upRightFromSquare'),
   FaIconData(FontAwesomeIcons.upload, 'upload'),
   FaIconData(FontAwesomeIcons.ups, 'ups'),
+  FaIconData(FontAwesomeIcons.upwork, 'upwork'),
   FaIconData(FontAwesomeIcons.usb, 'usb'),
   FaIconData(FontAwesomeIcons.solidUser, 'solidUser'),
   FaIconData(FontAwesomeIcons.user, 'user'),
@@ -1944,8 +1997,6 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.userGraduate, 'userGraduate'),
   FaIconData(FontAwesomeIcons.userGroup, 'userGroup'),
   FaIconData(FontAwesomeIcons.userInjured, 'userInjured'),
-  FaIconData(FontAwesomeIcons.userLarge, 'userLarge'),
-  FaIconData(FontAwesomeIcons.userLargeSlash, 'userLargeSlash'),
   FaIconData(FontAwesomeIcons.userLock, 'userLock'),
   FaIconData(FontAwesomeIcons.userMinus, 'userMinus'),
   FaIconData(FontAwesomeIcons.userNinja, 'userNinja'),
@@ -1973,7 +2024,6 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.vaadin, 'vaadin'),
   FaIconData(FontAwesomeIcons.vanShuttle, 'vanShuttle'),
   FaIconData(FontAwesomeIcons.vault, 'vault'),
-  FaIconData(FontAwesomeIcons.vectorSquare, 'vectorSquare'),
   FaIconData(FontAwesomeIcons.venus, 'venus'),
   FaIconData(FontAwesomeIcons.venusDouble, 'venusDouble'),
   FaIconData(FontAwesomeIcons.venusMars, 'venusMars'),
@@ -2007,8 +2057,10 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.volumeOff, 'volumeOff'),
   FaIconData(FontAwesomeIcons.volumeXmark, 'volumeXmark'),
   FaIconData(FontAwesomeIcons.vrCardboard, 'vrCardboard'),
+  
   FaIconData(FontAwesomeIcons.vuejs, 'vuejs'),
   FaIconData(FontAwesomeIcons.w, 'w'),
+  
   FaIconData(FontAwesomeIcons.walkieTalkie, 'walkieTalkie'),
   FaIconData(FontAwesomeIcons.wallet, 'wallet'),
   FaIconData(FontAwesomeIcons.wandMagic, 'wandMagic'),
@@ -2020,6 +2072,8 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.waterLadder, 'waterLadder'),
   FaIconData(FontAwesomeIcons.waveSquare, 'waveSquare'),
   FaIconData(FontAwesomeIcons.waze, 'waze'),
+  
+  FaIconData(FontAwesomeIcons.webflow, 'webflow'),
   FaIconData(FontAwesomeIcons.weebly, 'weebly'),
   FaIconData(FontAwesomeIcons.weibo, 'weibo'),
   FaIconData(FontAwesomeIcons.weightHanging, 'weightHanging'),
@@ -2062,6 +2116,7 @@ final faIconDataList = <FaIconData>[
   FaIconData(FontAwesomeIcons.wrench, 'wrench'),
   FaIconData(FontAwesomeIcons.x, 'x'),
   FaIconData(FontAwesomeIcons.xRay, 'xRay'),
+  FaIconData(FontAwesomeIcons.xTwitter, 'xTwitter'),
   FaIconData(FontAwesomeIcons.xbox, 'xbox'),
   FaIconData(FontAwesomeIcons.xing, 'xing'),
   FaIconData(FontAwesomeIcons.xmark, 'xmark'),

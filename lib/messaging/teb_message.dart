@@ -6,21 +6,21 @@ enum TebMessageType { info, sucess, error }
 
 enum TebModelType { dialog, toast, snackbar }
 
-class TebCustomMessage {
-  static TebCustomMessage error(BuildContext context, {required String message}) {
-    return TebCustomMessage(
-      context: context,
-      messageText: message,
-      messageType: TebMessageType.error,
-    );
+class TebMessage {
+  static TebMessage error(BuildContext context, {required String message}) {
+    return TebMessage(context: context, messageText: message, messageType: TebMessageType.error);
   }
 
-  static TebCustomMessage sucess(BuildContext context, {required String message, Color? textColor}) {
-    return TebCustomMessage(context: context, messageText: message, messageType: TebMessageType.sucess, textColor: textColor);
+  static TebMessage sucess(BuildContext context, {required String message, Color? textColor}) {
+    return TebMessage(context: context, messageText: message, messageType: TebMessageType.sucess, textColor: textColor);
   }
 
-  static TebCustomMessage errorToast(BuildContext context, {required String message}) {
-    return TebCustomMessage(
+  static TebMessage info(BuildContext context, {required String message, Color? textColor}) {
+    return TebMessage(context: context, messageText: message, messageType: TebMessageType.info, textColor: textColor);
+  }
+
+  static TebMessage errorToast(BuildContext context, {required String message}) {
+    return TebMessage(
       context: context,
       messageText: message,
       messageType: TebMessageType.error,
@@ -28,7 +28,7 @@ class TebCustomMessage {
     );
   }
 
-  TebCustomMessage({
+  TebMessage({
     TebModelType modelType = TebModelType.snackbar,
     required BuildContext context,
     required String messageText,
@@ -54,8 +54,9 @@ class TebCustomMessage {
     if (backgroundColor != null) {
       bkgColor = backgroundColor;
     } else {
-      bkgColor =
-          messageType == TebMessageType.error ? Theme.of(context).colorScheme.error : Theme.of(context).colorScheme.primary;
+      bkgColor = messageType == TebMessageType.error
+          ? Theme.of(context).colorScheme.error
+          : Theme.of(context).colorScheme.primary;
     }
 
     if (icon != null) {
@@ -76,16 +77,19 @@ class TebCustomMessage {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Row(
-              children: [
-                Icon(iconImage, color: txtColor),
-                const SizedBox(width: 5),
-                Flexible(child: Text(messageText, style: TextStyle(color: txtColor))),
-              ],
-            ),
-            duration: Duration(seconds: durationInSeconds),
-            backgroundColor: bkgColor,
-            action: action),
+          content: Row(
+            children: [
+              Icon(iconImage, color: txtColor),
+              const SizedBox(width: 5),
+              Flexible(
+                child: Text(messageText, style: TextStyle(color: txtColor)),
+              ),
+            ],
+          ),
+          duration: Duration(seconds: durationInSeconds),
+          backgroundColor: bkgColor,
+          action: action,
+        ),
       );
     }
 
@@ -98,10 +102,7 @@ class TebCustomMessage {
         fadeDuration: Duration(seconds: durationInSeconds),
         gravity: toastGravity,
         child: Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            color: bkgColor,
-          ),
+          decoration: BoxDecoration(borderRadius: const BorderRadius.all(Radius.circular(5)), color: bkgColor),
           alignment: Alignment.center,
           constraints: BoxConstraints(
             minHeight: toastFixedHeight,
@@ -116,7 +117,9 @@ class TebCustomMessage {
               children: [
                 Icon(iconImage, color: txtColor),
                 const SizedBox(width: 5),
-                Flexible(child: Text(messageText, style: TextStyle(color: txtColor))),
+                Flexible(
+                  child: Text(messageText, style: TextStyle(color: txtColor)),
+                ),
               ],
             ),
           ),

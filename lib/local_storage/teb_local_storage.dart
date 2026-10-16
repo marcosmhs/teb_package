@@ -6,6 +6,33 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TebLocalStorage {
+  static Future<bool> addItemToList({required String key, required String itemKey, required dynamic itemValue}) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    // Recupera o mapa atual
+    String? jsonString = sharedPreferences.getString(key);
+    Map<String, dynamic> listaDados = {};
+    if (jsonString != null && jsonString.isNotEmpty) {
+      listaDados = Map<String, dynamic>.from(jsonDecode(jsonString));
+    }
+    // Adiciona ou atualiza o item
+    listaDados[itemKey] = itemValue;
+    // Salva novamente
+    return await sharedPreferences.setString(key, jsonEncode(listaDados));
+  }
+
+  static Future<Map<String, dynamic>> getItemsFromList({required String key}) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    String? jsonString = sharedPreferences.getString(key);
+    if (jsonString != null && jsonString.isNotEmpty) {
+      try {
+        return Map<String, dynamic>.from(jsonDecode(jsonString));
+      } catch (e) {
+        return {};
+      }
+    }
+    return {};
+  }
+
   static Future<bool> saveString({required String key, required String value}) async {
     final sharedPreferences = await SharedPreferences.getInstance();
 

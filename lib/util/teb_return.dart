@@ -3,45 +3,57 @@ import 'package:http/http.dart';
 
 enum TebReturnType { error, sucess, info }
 
-class TebCustomReturn {
+class TebReturn {
   final TebReturnType returnType;
   final String message;
   final String returnCode;
-  final Object? object;
+  final Object? arguments;
 
-  TebCustomReturn({
+  TebReturn({
     required this.returnType,
     required this.message,
     this.returnCode = '0',
-    this.object,
+    this.arguments,
   });
 
-  static TebCustomReturn get unauthorizedError {
-    return TebCustomReturn(
+  static TebReturn get unauthorizedError {
+    return TebReturn(
       returnType: TebReturnType.error,
       message: 'Sem autorização de acesso',
       returnCode: '401',
     );
   }
 
-  static TebCustomReturn error(String message) {
-    return TebCustomReturn(
-      returnType: TebReturnType.error,
-      message: message,
-    );
+  Map<String, Object?> get argumentsAsMap {
+    return arguments as Map<String, Object?>;
   }
 
-  static TebCustomReturn get offline {
-    return TebCustomReturn(
+  bool get isSucess => returnType == TebReturnType.sucess;
+  bool get isError => returnType == TebReturnType.error;
+
+  static TebReturn get sucess {
+    return TebReturn(returnType: TebReturnType.sucess, message: 'Sucesso');
+  }
+
+  static TebReturn sucessWithArguments(Object arguments) {
+    return TebReturn(returnType: TebReturnType.sucess, message: 'Sucesso', arguments: arguments);
+  }
+
+  static TebReturn error(String message, {Object? arguments}) {
+    return TebReturn(returnType: TebReturnType.error, message: message, arguments: arguments);
+  }
+
+  static TebReturn get offline {
+    return TebReturn(
       returnType: TebReturnType.error,
       message: 'Sem conexão com internet',
       returnCode: '0',
     );
   }
 
-  static TebCustomReturn? httpResponseError({required Response response}) {
+  static TebReturn? httpResponseError({required Response response}) {
     if (response.statusCode >= 400) {
-      return TebCustomReturn(
+      return TebReturn(
         returnType: TebReturnType.error,
         message: 'Erro HTTP',
         returnCode: response.statusCode.toString(),
@@ -49,13 +61,13 @@ class TebCustomReturn {
     }
 
     if (response.body == 'null') {
-      return TebCustomReturn(returnType: TebReturnType.error, message: 'Sem retorno do Firebase');
+      return TebReturn(returnType: TebReturnType.error, message: 'Sem retorno do Firebase');
     }
 
     return null;
   }
 
-  static TebCustomReturn authSignUpError(String error) {
+  static TebReturn authSignUpError(String error) {
     Map<String, String> authErrors = {
       'EMAIL_EXISTS': 'E-mail já foi cadastrado',
       'OPERATION_NOT_ALLOWED': 'Erro interno, acesso por e-mail e senha desativado',
@@ -64,38 +76,32 @@ class TebCustomReturn {
       'INVALID_EMAIL': 'E-mail inválido',
       'EMAIL_NOT_FOUND': 'E-mail não encontrado',
       'weak-password': 'Senha inválida - muito fraca',
-      'email-already-in-use': 'E-mail já foi cadastrado',
       'operation-not-allowed': 'Operação não permitida',
       'invalid-email': 'E-mail inválido',
       'user-disabled': 'Usuário desativado',
       'user-not-found': 'Usuário não encontrado',
+      'email-already-in-use': 'Este e-mail não pode ser usado',
       'wrong-password': 'Senha incorreta',
-      'invalid-login-credentials': 'Usuário ou senha inválidos'
+      'invalid-credential': 'Usuário ou senha inválidos',
+      'invalid-login-credentials': 'Usuário ou senha inválidos',
     };
     if (authErrors[error] == null) {
-      return TebCustomReturn(returnType: TebReturnType.error, message: error);
+      return TebReturn(returnType: TebReturnType.error, message: error);
     } else {
-      return TebCustomReturn(returnType: TebReturnType.error, message: authErrors[error] ?? '');
+      return TebReturn(returnType: TebReturnType.error, message: authErrors[error] ?? '');
     }
   }
 
-  static TebCustomReturn changeUserError(String error) {
+  static TebReturn changeUserError(String error) {
     Map<String, String> authErrors = {
       'EMAIL_EXISTS': 'O e-mail informado já está em uso',
       'INVALID_ID_TOKEN': 'Erro interno, token inválido',
       'WEAK_PASSWORD': 'A senha deve ter 6 ou mais caracteres',
     };
     if (authErrors[error] == null) {
-      return TebCustomReturn(returnType: TebReturnType.error, message: 'Erro não tratado: $error');
+      return TebReturn(returnType: TebReturnType.error, message: 'Erro não tratado: $error');
     } else {
-      return TebCustomReturn(returnType: TebReturnType.error, message: authErrors[error] ?? '');
+      return TebReturn(returnType: TebReturnType.error, message: authErrors[error] ?? '');
     }
-  }
-
-  static TebCustomReturn get sucess {
-    return TebCustomReturn(
-      returnType: TebReturnType.sucess,
-      message: 'Sucesso',
-    );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class TebCustomDialog {
+class TebDialog {
   final BuildContext context;
 
-  TebCustomDialog({required this.context});
+  TebDialog({required this.context});
 
   Future<bool?> errorMessage({required String message}) {
     return customdialog(
@@ -12,11 +12,7 @@ class TebCustomDialog {
       yesButtonText: "OK",
       yesButtonValue: false,
       noButtonText: '',
-      icon: Icon(
-        const FaIcon(FontAwesomeIcons.circleExclamation).icon,
-        size: 50,
-        color: Theme.of(context).colorScheme.error,
-      ),
+      icon: Icon(const FaIcon(FontAwesomeIcons.circleExclamation).icon, size: 50, color: Theme.of(context).colorScheme.error),
     );
   }
 
@@ -40,12 +36,7 @@ class TebCustomDialog {
   Future<bool?> informationDialog({required String message}) {
     // A cor do botão deve ser passada em branco para assumir a cor do tema
     // noButtonText deve ser deixado em branco para que não seja exibido
-    return customdialog(
-      message: message,
-      yesButtonText: "OK",
-      noButtonText: '',
-      icon: const Icon(Icons.info_outline, size: 50),
-    );
+    return customdialog(message: message, yesButtonText: "OK", noButtonText: '', icon: const Icon(Icons.info_outline, size: 50));
   }
 
   Future<bool?> customdialog({
@@ -71,16 +62,12 @@ class TebCustomDialog {
           ],
         ),
         actions: [
-          if (noButtonText != '')
-            ElevatedButton(
-              onPressed: () => Navigator.of(ctx).pop(false),
-              child: Text(noButtonText),
-            ),
+          if (noButtonText != '') ElevatedButton(onPressed: () => Navigator.of(ctx).pop(false), child: Text(noButtonText)),
           ElevatedButton(
             onPressed: () => Navigator.of(ctx).pop(yesButtonValue),
             style: ButtonStyle(backgroundColor: WidgetStateProperty.all(yesBtnColor)),
             child: Text(yesButtonText),
-          )
+          ),
         ],
       ),
     );
